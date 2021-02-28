@@ -17,6 +17,8 @@ app.use(formidable())
 
 app.use(express.static(path.join(__dirname, './public')))
 app.use('/user',require('./router/user_routes.js'))
+app.use('/post',require('./router/post_routes.js'))
+
 // app.use(require('./router/pages.js'))
 
 

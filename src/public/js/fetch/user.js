@@ -1,16 +1,21 @@
 import {setItem, getItem,deleteItem} from '../localStorage.js'
 
 const d = document,
-$login = d.getElementById('login'),
-$erase = d.getElementById('erase'),
-$edit = d.getElementById('edit')
+$login = d.getElementById('user-login'),
+$erase = d.getElementById('user-erase'),
+$edit = d.getElementById('user-edit'),
+$logout = d.getElementById('logout')
 
-export const logout = ()=>{
-    deleteItem('token')
+
+export const logoutUser = (target)=>{
+    if(target === $logout){
+        deleteItem('token')
+    }
     // reload page
 }
 
-export const erase = ()=>{
+export const eraseUser = (target)=>{
+    if(target !== $erase) return 0
     const data = new FormData($erase)
     fetch('/user/erase',{
         body: data,
@@ -31,7 +36,8 @@ export const erase = ()=>{
     })
 }
 
-export const edit = ()=>{
+export const editUser = (target)=>{
+    if(target !== $edit) return 0
     const data = new FormData($edit)
     // data.set('token', getItem('token'))
     fetch('/user/edit',{
@@ -53,7 +59,8 @@ export const edit = ()=>{
     })
 }
 
-export const login= ()=>{
+export const loginUser= (target)=>{
+    if(target !== $login) return 0
     const data = new FormData($login)
     fetch('/user/login',{
         body: data,

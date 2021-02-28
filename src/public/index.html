@@ -11,7 +11,7 @@
 
     <h2>Login</h2>
 
-    <form id="login">
+    <form id="user-login">
         <label>username</label>
         <input type="text" name="username" required>
         <br>
@@ -20,20 +20,10 @@
         <br>
         <button type="submit">login</button>
     </form>
-    
-    <form id="verify">
-        <label>username</label>
-        <input type="text" name="username" required>
-        <br>
-        <label>password</label>
-        <input type="password" name="password" required>
-        <br>
-        <button type="submit">verify</button>
-    </form> -->
 
-    <h2>Edit</h2>
+    <!-- <h2>Edit</h2>
     
-    <form id="edit">
+    <form id="user-edit">
         <label>username</label>
         <input type="text" name="username" required>
         <br>
@@ -52,7 +42,7 @@
 
     <h2>erase</h2>
 
-    <form id="erase">
+    <form id="user-erase">
         <label>username</label>
         <input type="text" name="username" required>
         <br>
@@ -60,7 +50,51 @@
         <input type="password" name="password" required>
         <br>
         <button type="submit">erase</button>
+    </form> -->
+
+    <h2>POSTS</h2>
+
+    <h2>Crear</h2>
+    <form id="post-create">
+        <label>title</label>
+        <input type="text" name="title" required>
+        <br>
+        <label>topic</label>
+        <input type="text" name="topic" required>
+        <br>
+        <label>content</label>
+        <textarea name="content" id="" cols="30" rows="10"></textarea>
+        <br>
+        <button type="submit">Crear</button>
     </form>
+    
+
+    <h2>Edit</h2>
+    
+    <form id="post-edit">
+        <label>id</label>
+        <input type="text" name="_id" required>
+        <br>
+        <label>title</label>
+        <input type="text" name="title" required>
+        <br>
+        <label>topic</label>
+        <input type="text" name="topic" required>
+        <br>
+        <label>content</label>
+        <textarea name="content" id="" cols="30" rows="10"></textarea>
+        <br>
+        <button type="submit">Edit</button>
+    </form>
+
+    <h2>erase</h2>
+
+    <form id="post-erase">
+        <label>id</label>
+        <input type="text" name="_id" required>
+        <br>
+        <button type="submit">erase</button>
+    </form> 
 
     <button id="logout">LogOut</button>
     <script src="js/index.js" type="module"></script>
