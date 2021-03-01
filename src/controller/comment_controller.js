@@ -16,23 +16,48 @@ const saveComment = async(data) =>{
     return comment
 }
 
-const updateComment = async (id, data)=>{
+const updateComment = async (_id, data)=>{
     let newComment = {}
-    // console.log({'en get: ':comment})
     for(let prop in data){
-        newComment[prop] = data[prop]
+        if(newComment[prop]){
+            newComment[prop] = data[prop]
+        }
     }
     const comment = await CommentSchema.updateOne(
-        {_id: id},
+        {_id},
         {
             $set: newComment
         })
     return comment
 }
 
-const eraseComment = async (id)=>{
-    const ans = await CommentSchema.deleteOne({_id: id})
+const eraseComment = async (_id)=>{
+    const ans = await CommentSchema.deleteOne({_id})
     return ans
+}
+
+const eraseCommentsOfPost = async (postId)=>{
+    const ans = await CommentSchema.deleteMany({postId})
+    return ans
+}
+
+const eraseCommentsOfUser = async (owner)=>{
+    const ans = await CommentSchema.deleteMany({owner})
+    return ans
+}
+
+const updateCommentOwners = async(oldOwner = '', newOwner = '')=>{
+    if(oldOwner && newOwner){
+        let info = await CommentSchema.updateMany(
+            {owner: oldOwner},
+            {
+                $set: {owner: newOwner}
+            })
+        return info
+    }
+    else{
+        return null
+    }
 }
 
 module.exports = {
@@ -40,5 +65,8 @@ module.exports = {
     getComments,
     saveComment,
     updateComment,
-    eraseComment
+    eraseComment,
+    eraseCommentsOfPost,
+    updateCommentOwners,
+    eraseCommentsOfUser
 }

@@ -1,4 +1,5 @@
 const PostSchema = require('../models/Post.js')
+const {eraseCommentsOfPost} = require('./comment_controller.js')
 
 const getOnePostById = async(filters = {}) =>{
     const post = await PostSchema.findOne(filters)
@@ -29,7 +30,27 @@ const updatePost = async (id, data)=>{
     return post
 }
 
+const updatePostOwners = async(oldOwner = '', newOwner = '')=>{
+    if(oldOwner && newOwner){
+        let info = await PostSchema.updateMany(
+            {owner: oldOwner},
+            {
+                $set: {owner: newOwner}
+            })
+        return info
+    }
+    else{
+        return null
+    }
+}
+
+const erasePostOfUser = async (owner)=>{
+    const ans = await PostSchema.deleteMany({owner})
+    return ans
+}
+
 const erasePost = async (id)=>{
+    await eraseCommentsOfPost(id)
     const ans = await PostSchema.deleteOne({_id: id})
     return ans
 }
@@ -39,5 +60,7 @@ module.exports = {
     savePost,
     updatePost,
     erasePost,
-    getOnePostById
+    getOnePostById,
+    updatePostOwners,
+    erasePostOfUser
 }

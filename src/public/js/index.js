@@ -24,7 +24,7 @@ d.addEventListener("DOMContentLoaded", e=>{
     d.addEventListener('click', e=>{
         logoutUser(e.target)
     })
-    // getPosts()
+    getPosts()
     getComments()
 })
 

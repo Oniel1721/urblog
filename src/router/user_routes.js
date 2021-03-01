@@ -2,6 +2,10 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const Router = require('express').Router()
 const { getUserByName, saveUser, updateUser, eraseUser } = require('../controller/user_controller.js')
+const { updatePostOwners } = require('../controller/post_controller.js')
+const { updateCommentOwners } = require('../controller/comment_controller.js')
+
+
 
 const salt = 13
 
@@ -123,22 +127,54 @@ Router.put('/edit', verifyUser, (req, res)=>{
         if(req.fields.npassword){
             newUser.password = bcrypt.hashSync(req.fields.npassword,salt)
         }
-        updateUser(req.verified.id, newUser)
-        .then(user=>{
-            let answer = {
-                msg: "user updated",
-                token: jwt.sign({
-                    name: user.username,
-                    id: user._id
-                }, 'oniel1721'),
-                ok: true
-            }
-            res.json(answer)
-        })
-        .catch(err=>{
-            console.error('updateUser error: ',err)
-            res.json({msg: "error updating user"})
-        })
+        if(newUser.username){
+            updateCommentOwners(req.fields.username, newUser.username)
+            .then(info=>{
+                updatePostOwners(req.fields.username, newUser.username)
+                .then(info=>{
+                    updateUser(req.verified.id, newUser)
+                    .then(user=>{
+                        console.log({'en update': user})
+                        let answer = {
+                            msg: "user updated",
+                            token: jwt.sign({
+                                name: newUser.username,
+                                id: req.verified.id
+                            }, 'oniel1721'),
+                            ok: true
+                        }
+                        res.json(answer)
+                    })
+                    .catch(err=>{
+                        console.error('updateUser error: ',err)
+                        res.json({msg: "error updating user"})
+                    })
+                })
+                .catch(err=>{
+                    console.error('updatePostOwners error: ',err)
+                    res.json({msg: "error updating postOwners"})
+                })
+            })
+            .catch(err=>{
+                console.error('updateCommentOwners error: ',err)
+                res.json({msg: "error updating commentOwners"})
+            })
+        }
+        else{
+            updateUser(req.verified.id, newUser, req.fields.username)
+            .then(user=>{
+                console.log({'en update': user})
+                let answer = {
+                    msg: "user updated",
+                    ok: true
+                }
+                res.json(answer)
+            })
+            .catch(err=>{
+                console.error('updateUser error: ',err)
+                res.json({msg: "error updating user"})
+            })
+        }
     }
     else{
         res.json(req.verified)
@@ -147,7 +183,7 @@ Router.put('/edit', verifyUser, (req, res)=>{
 
 Router.delete('/erase',verifyUser,(req, res)=>{
     if(req.verified.ok){
-        eraseUser(req.verified.id)
+        eraseUser(req.verified.id, req.fields.username)
         .then(ans=>{
             res.json({ok: true, msg: "user erased"})
         })
