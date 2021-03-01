@@ -7,7 +7,6 @@ const getOnePostById = async(filters = {}) =>{
 
 const getPosts = async(filters = {}) =>{
     const post = await PostSchema.find(filters)
-    console.log({post})
     return post
 }
 

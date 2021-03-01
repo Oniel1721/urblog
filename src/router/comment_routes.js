@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const Router = require('express').Router()
-const { savePost, updatePost, erasePost, getPosts, getOnePostById } = require('../controller/post_controller.js')
+const { saveComment, getComments, getOneCommentById, updateComment, eraseComment } = require('../controller/comment_controller.js')
 
 const verifyUser = (req, res, next)=>{
     const token = req.headers['authentication'].split(' ')[1]
@@ -24,30 +24,30 @@ const verifyUser = (req, res, next)=>{
 }
 
 Router.get('/get', (req, res)=>{
-    getPosts(req.query)
-    .then(post=>{
-        res.json(post)
+    getComments(req.query)
+    .then(comments=>{
+        res.json(comments)
     })
     .catch(err=>{
-        console.error('get Posts: ', err)
-        res.json({msg: 'error getting post'})
+        console.error('get comments: ', err)
+        res.json({msg: 'error getting comments'})
     })
 })
 
 Router.post('/create', verifyUser, (req, res)=>{
     if(req.verified.ok){
-        savePost(req.fields)
-        .then(post=>{
+        saveComment(req.fields)
+        .then(comment=>{
             let answer = {
-                post,
+                comment,
                 ok: true,
-                msg: 'post created'
+                msg: 'comment created'
             }
             res.json(answer)
         })
         .catch(err=>{
-            console.error('save Post: ', err)
-            res.json({msg: 'error saving post'})
+            console.error('save comment: ', err)
+            res.json({msg: 'error saving comment'})
         })
     }
     else{
@@ -57,22 +57,24 @@ Router.post('/create', verifyUser, (req, res)=>{
 
 Router.put('/edit', verifyUser, (req, res)=>{
     if(req.verified.ok){
-        getOnePostById({"_id":req.fields._id})
-        .then(post=>{
+        getOneCommentById({"_id":req.fields._id})
+        .then(comment=>{
             let answer = {}
-            if(post.owner === req.verified.name){
-                updatePost(req.fields._id,req.fields)
-                .then(post=>{
+            // console.log({'en get':comment})
+            if(comment.owner === req.verified.name){
+                updateComment(req.fields._id,req.fields)
+                .then(info=>{
+                    // console.log({'en update':info})
                     answer = {
-                        post,
+                        info,
                         ok: true,
-                        msg: 'post updated'
+                        msg: 'comment updated'
                     }
                     res.json(answer)
                 })
                 .catch(err=>{
-                    console.error('update Post error: ', err)
-                    res.json({msg: 'error updating post'})
+                    console.error('update comment error: ', err)
+                    res.json({msg: 'error updating comment'})
                 })
             }
             else{
@@ -82,8 +84,8 @@ Router.put('/edit', verifyUser, (req, res)=>{
             }
         })
         .catch(err=>{
-            console.error('get Posts error: ', err)
-            res.json({msg: 'error getting post'})
+            console.error('get comment error: ', err)
+            res.json({msg: 'error getting comment'})
         })
     }
     else{
@@ -93,20 +95,20 @@ Router.put('/edit', verifyUser, (req, res)=>{
 
 Router.delete('/erase',verifyUser,(req, res)=>{
     if(req.verified.ok){
-        getOnePostById({"_id":req.fields._id})
-        .then(post=>{
+        getOneCommentById({"_id":req.fields._id})
+        .then(comment=>{
             let answer = {}
-            if(post.owner === req.verified.name){
-                erasePost(post._id)
+            if(comment.owner === req.verified.name){
+                eraseComment(comment._id)
                 .then(info=>{
                     if(!info.deletedCount){
                         answer.ok = false
-                        answer.msg = "post doest exist"
+                        answer.msg = "comment doest exist"
                         res.json(answer)
                     }
                     else{
                         answer.ok = true
-                        answer.msg = "post erased"
+                        answer.msg = "comment erased"
                         res.json(answer)
                     }
                 })
@@ -122,8 +124,8 @@ Router.delete('/erase',verifyUser,(req, res)=>{
             }
         })
         .catch(err=>{
-            console.error('get Posts error: ', err)
-            res.json({msg: 'error getting post'})
+            console.error('get comment error: ', err)
+            res.json({msg: 'error getting comment'})
         })
     }
     else{
