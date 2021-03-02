@@ -20,6 +20,9 @@ app.use(express.static(path.join(__dirname, './public')))
 app.use('/user',require('./router/user_routes.js'))
 app.use('/post',require('./router/post_routes.js'))
 app.use('/comment',require('./router/comment_routes.js'))
+app.get('/test', (req, res)=>{
+    res.sendFile(path.join(__dirname, './public/test.html'))
+})
 
 
 app.listen(app.get('port'),()=>{
