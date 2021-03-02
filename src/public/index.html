@@ -7,128 +7,78 @@
     <title>URBLOG</title>
 </head>
 <body>
-    <h1>URBLOG</h1>
-
-    <h2>Login</h2>
-
-    <form id="user-login">
-        <label>username</label>
-        <input type="text" name="username" required>
-        <br>
-        <label>password</label>
-        <input type="password" name="password" required>
-        <br>
-        <button type="submit">login</button>
-    </form>
-
-    <!-- <h2>Edit</h2>
-    
-    <form id="user-edit">
-        <label>username</label>
-        <input type="text" name="username" required>
-        <br>
-        <label>password</label>
-        <input type="password" name="password" required>
-        <br>
-
-        <label>new username</label>
-        <input type="text" name="nusername">
-        <br>
-        <label>new password</label>
-        <input type="password" name="npassword">
-        <br>
-        <button type="submit">edit</button>
-    </form> -->
-
-    <h2>erase</h2>
-
-    <form id="user-erase">
-        <label>username</label>
-        <input type="text" name="username" required>
-        <br>
-        <label>password</label>
-        <input type="password" name="password" required>
-        <br>
-        <button type="submit">erase</button>
-    </form>
-
-    <h2>POSTS</h2>
-
-    <h2>Crear</h2>
-    <form id="post-create">
-        <label>title</label>
-        <input type="text" name="title" required>
-        <br>
-        <label>topic</label>
-        <input type="text" name="topic" required>
-        <br>
-        <label>content</label>
-        <textarea name="content"  cols="30" rows="10"></textarea>
-        <br>
-        <button type="submit">Crear</button>
-    </form>
-    
-
-    <!-- <h2>Edit</h2>
-    
-    <form id="post-edit">
-        <label>id</label>
-        <input type="text" name="_id" required>
-        <br>
-        <label>title</label>
-        <input type="text" name="title" required>
-        <br>
-        <label>topic</label>
-        <input type="text" name="topic" required>
-        <br>
-        <label>content</label>
-        <textarea name="content" id="" cols="30" rows="10"></textarea>
-        <br>
-        <button type="submit">Edit</button>
-    </form> -->
-<!-- 
-    <h2>erase</h2>
-
-    <form id="post-erase">
-        <label>id</label>
-        <input type="text" name="_id" required>
-        <br>
-        <button type="submit">erase</button>
-    </form>  -->
-
-    <h2>Comments</h2>
-
-    <h2>Crear</h2>
-    <form id="comment-create">
-        <label>post id</label>
-        <input type="text" name="postId" required>
-        <br>
-        <label>content</label>
-        <textarea name="content"  cols="30" rows="10"></textarea>
-        <br>
-        <button type="submit">Crear</button>
-    </form>
-<!-- 
-    <h2>Edit</h2>
-    <form id="comment-edit">
-        <label>comment id</label>
-        <input type="text" name="_id" required>
-        <br>
-        <label>new content</label>
-        <textarea name="content"  cols="30" rows="10"></textarea>
-        <br>
-        <button type="submit">Edit</button>
-    </form> -->
-
-    <h2>Erase</h2>
-    <form id="comment-erase">
-        <label>comment id</label>
-        <input type="text" name="_id" required>
-        <br>
-        <button type="submit">erase</button>
-    </form>
-
-    <button id="logout">LogOut</button>
+    <header class="header">
+        <button>Log in</button>
+        <button>Sign up</button>
+    </header>
+    <nav class="filters-container">
+        <div class="category-filter">
+            <select>
+                <option value="value1" selected>Categories</option>
+                <option value="value2">Value 2</option>
+                <option value="value3">Value 3</option>
+            </select>
+        </div>
+        <div class="most-filter">
+            <button>Recent</button>
+            <button>Recent</button>
+            <button>Popular</button>
+        </div>
+        <div class="search-filter">
+            <input type="text" placeholder="Search...">
+        </div>
+    </nav>
+    <main class="posts-container">
+        <div class="post">
+            <h3 class="post-title">Post Title</h3>
+            <h3 class="post-topic">Post Topic</h3>
+            <p class="post-content">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus laboriosam sequi rem nostrum tempora sunt a iure dolorem, explicabo non dolor reiciendis perferendis nesciunt perspiciatis expedita similique! Quo, accusantium ipsum!
+                Laudantium autem distinctio eum excepturi, enim exercitationem ex. Corporis veritatis ipsam ullam vitae alias reprehenderit voluptatum doloremque fugiat maxime itaque repellat possimus, vel consectetur quasi unde non dolore ut cumque?
+                Expedita quo dolores optio sequi magnam illum eaque unde. Est architecto inventore, id distinctio debitis tempora facilis. Vero mollitia eum quos error at aperiam debitis provident quidem aspernatur ipsum. Tempora?
+                Nam non nulla repellat qui quaerat beatae quo voluptates aspernatur voluptate, corporis officia maiores minima, eligendi ut adipisci vel dolorem quam sequi voluptas illum architecto officiis similique? Dolorum, iure modi!
+                Omnis explicabo facere, cum unde porro id voluptates nisi quod quam eum molestiae ad eveniet culpa impedit consectetur? Saepe deleniti quas iusto, id amet voluptas velit hic eius tempora placeat?
+                Aliquid dolore assumenda doloremque repellat soluta nobis. Debitis vel obcaecati tempore suscipit repellat temporibus esse aliquid alias incidunt! Aspernatur tempore totam molestias temporibus iusto delectus in nostrum cumque enim corporis.
+                Illum architecto, molestiae optio quam necessitatibus a modi quos, repudiandae veritatis obcaecati soluta, labore exercitationem perspiciatis laborum ex repellendus rerum nobis perferendis explicabo minus velit facilis libero provident accusamus. Eum!
+                Consequuntur impedit, expedita quidem molestias nam ad eligendi repudiandae sunt, debitis, dolore praesentium aperiam itaque accusantium? A saepe mollitia fugiat, perspiciatis libero alias provident! Eum molestias nostrum amet laborum dolore?
+                Eos architecto beatae porro. Tenetur aperiam sequi illum cupiditate quasi ipsam fuga at molestiae praesentium minima, veniam deserunt modi fugiat, possimus dolores error provident, voluptas exercitationem! Doloribus quam cupiditate laudantium.
+                Sequi iste fugit dolorem similique facilis fuga expedita eius tempore nisi! Culpa porro, expedita magnam quidem nulla cum nisi ducimus at? Tenetur, sequi consequatur minima quos tempore asperiores quo error!
+            </p>
+            <div class="post-info">
+                <p class="post-date">Oct 10 - 2021</p>
+                <p class="post-owner">Brock123</p>
+            </div>
+            <div class="comment-form">
+                <textarea class="hide" cols="30" rows="10" placeholder="Type a comment..."></textarea>
+                <button class="comment-btn">Comment</button>
+                <button class="cancel-btn">Cancel</button>
+            </div>
+            <div class="comments-container">
+                <h3>2 Comments</h3>
+                <div class="comment">
+                    <div class="comment-info">
+                        <p class="comment-owner">Brock123</p>
+                        <p class="comment-date">Oct 10 - 2021</p>
+                    </div>
+                    <p class="comment-content">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita sed culpa omnis saepe nobis porro laudantium corporis sequi consequatur amet nihil odit assumenda provident eligendi temporibus, impedit eaque. Possimus, doloribus?
+                    </p>
+                </div>
+                <div class="comment">
+                    <div class="comment-info">
+                        <p class="comment-owner">Brock123</p>
+                        <p class="comment-date">Oct 10 - 2021</p>
+                    </div>
+                    <p class="comment-content">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita sed culpa omnis saepe nobis porro laudantium corporis sequi consequatur amet nihil odit assumenda provident eligendi temporibus, impedit eaque. Possimus, doloribus?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>this is the footer</p>
+    </footer>
     <script src="js/index.js" type="module"></script>
 </body>
 </html>
