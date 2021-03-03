@@ -57,8 +57,26 @@
 }
 
 .comment-form{
+    display: flex;
     padding-bottom: 1rem;
     border-bottom: solid 2px white;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.comment-form textarea{
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+
+.comment-form .cancel-btn{
+    margin-left: 1rem;
+}
+
+.comments-container h4{
+    cursor: pointer;
 }
 
 .comment{

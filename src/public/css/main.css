@@ -41,6 +41,7 @@ html{
 
 .post-vw{
     width: 67.5vw;
+    /* width: 685px; */
 }
 
 .m-auto{
@@ -48,7 +49,11 @@ html{
 }
 
 .hide{
-    display: none;
+    transform: scale(0, 0);
+}
+
+.height-0{
+    height: 0;
 }
 
 .bold{
@@ -76,10 +81,15 @@ html{
 .cancel-btn{
     background-color: crimson;
     color: #030303;
+    border: 1px solid #030303;
 }
 
 .btn{
     cursor: pointer;
+}
+
+.transition{
+    transition: all 0.5s ease-out;
 }
 
 
@@ -95,5 +105,82 @@ html{
 .header *{
     margin-right: 10px;
 }
+
+/* BTN-MENU */
+
+.menu-options-container{
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    z-index: 100;
+    width: 8vw;
+}
+
+.menu-option{
+    background-color: #35B7FF;
+    padding: 0.5rem;
+    border-radius: 50%;
+    height: 4vw;
+    width: 4vw;
+    margin: auto;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.opt-4{
+    transform: translateY( calc(400% + 40px) );
+    z-index: 101;
+}
+
+.opt-3{
+    transform: translateY( calc(300% + 30px) );
+    z-index: 102;
+}
+
+.opt-2{
+    transform: translateY( calc(200% + 20px) );
+    z-index: 103;
+}
+
+.opt-1{
+    transform: translateY( calc(100% + 10px) );
+    z-index: 104;
+}
+
+.menu-switch{
+    display: flex;
+    flex-direction: column;
+    height: 5.5vw;
+    width: 5.5vw;
+    z-index: 105;
+    margin-bottom: 0;
+}
+
+.menu-switch div{
+    background-color: white;
+    margin: auto;
+}
+
+.menu-switch-line-1{
+    height: 4vw;
+    width:  0.5vw;
+    transform: translateY(0.5vw);
+}
+
+.menu-switch-line-2{
+    width: 4vw;
+    height:  0.5vw;
+    transform: translateY(-2.25vw);
+}
+
+.menu-switch.rotate{
+    transform: rotate(315deg);
+}
+
+
+
+
 
 

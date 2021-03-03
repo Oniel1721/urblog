@@ -25,9 +25,9 @@
         </div>
         <div class="vertical-line white-bg">|</div>
         <div class="most-filter">
-            <button class="btn black-btn">Older</button>
-            <button class="btn black-btn">Recent</button>
-            <button class="btn white-btn">Popular</button>
+            <button class="btn white-btn transition">Recent</button>
+            <button class="btn black-btn transition">Popular</button>
+            <button class="btn black-btn transition">Older</button>
         </div>
         <div class="search-filter bold">
             <input type="text" class="bold" placeholder="Search...">
@@ -39,14 +39,7 @@
             <h4 class="post-topic white-c bold">Post Topic</h4>
             <p class="post-content gray-c">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus laboriosam sequi rem nostrum tempora sunt a iure dolorem, explicabo non dolor reiciendis perferendis nesciunt perspiciatis expedita similique! Quo, accusantium ipsum!
-                Laudantium autem distinctio eum excepturi, enim exercitationem ex. Corporis veritatis ipsam ullam vitae alias reprehenderit voluptatum doloremque fugiat maxime itaque repellat possimus, vel consectetur quasi unde non dolore ut cumque?
-                Expedita quo dolores optio sequi magnam illum eaque unde. Est architecto inventore, id distinctio debitis tempora facilis. Vero mollitia eum quos error at aperiam debitis provident quidem aspernatur ipsum. Tempora?
-                Nam non nulla repellat qui quaerat beatae quo voluptates aspernatur voluptate, corporis officia maiores minima, eligendi ut adipisci vel dolorem quam sequi voluptas illum architecto officiis similique? Dolorum, iure modi!
-                Omnis explicabo facere, cum unde porro id voluptates nisi quod quam eum molestiae ad eveniet culpa impedit consectetur? Saepe deleniti quas iusto, id amet voluptas velit hic eius tempora placeat?
-                Aliquid dolore assumenda doloremque repellat soluta nobis. Debitis vel obcaecati tempore suscipit repellat temporibus esse aliquid alias incidunt! Aspernatur tempore totam molestias temporibus iusto delectus in nostrum cumque enim corporis.
-                Illum architecto, molestiae optio quam necessitatibus a modi quos, repudiandae veritatis obcaecati soluta, labore exercitationem perspiciatis laborum ex repellendus rerum nobis perferendis explicabo minus velit facilis libero provident accusamus. Eum!
-                Consequuntur impedit, expedita quidem molestias nam ad eligendi repudiandae sunt, debitis, dolore praesentium aperiam itaque accusantium? A saepe mollitia fugiat, perspiciatis libero alias provident! Eum molestias nostrum amet laborum dolore?
-                Eos architecto beatae porro. Tenetur aperiam sequi illum cupiditate quasi ipsam fuga at molestiae praesentium minima, veniam deserunt modi fugiat, possimus dolores error provident, voluptas exercitationem! Doloribus quam cupiditate laudantium.
+                Laudantium autem distinctio eum excepturi, enim exercitationem ex. Corporis veritatis ipsam ullam vitae alias reprehenderit vnt modi fugiat, possimus dolores error provident, voluptas exercitationem! Doloribus quam cupiditate laudantium.
                 Sequi iste fugit dolorem similique facilis fuga expedita eius tempore nisi! Culpa porro, expedita magnam quidem nulla cum nisi ducimus at? Tenetur, sequi consequatur minima quos tempore asperiores quo error!
             </p>
             <div class="post-info">
@@ -54,9 +47,9 @@
                 <p class="post-owner blue-c bold">Brock123</p>
             </div>
             <div class="comment-form">
-                <textarea class="hide" cols="30" rows="10" placeholder="Type a comment..."></textarea>
+                <textarea class="transition hide height-0" cols="30" rows="10" placeholder="Type a comment..."></textarea>
                 <button class="comment-btn btn white-bg black-c bold">Comment</button>
-                <button class="cancel-btn btn hide">Cancel</button>
+                <button class="cancel-btn btn transition hide height-0">Cancel</button>
             </div>
             <div class="comments-container">
                 <h4 class="white-c bold">2 Comments</h4>
@@ -81,9 +74,16 @@
             </div>
         </div>
     </main>
-    <footer>
-        <p>this is the footer</p>
-    </footer>
+    <nav class="menu-options-container">
+        <div class="menu-option opt-4 transition"></div>
+        <div class="menu-option opt-3 transition"></div>
+        <div class="menu-option opt-2 transition"></div>
+        <div class="menu-option opt-1 transition"></div>
+        <div class="menu-option menu-switch transition">
+            <div class="menu-switch-line-1"></div>
+            <div class="menu-switch-line-2"></div>
+        </div>
+    </nav>
     <script src="js/index.js" type="module"></script>
 </body>
 </html>
