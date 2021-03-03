@@ -1,0 +1,72 @@
+
+.post-title, .post-topic, .post-content, .post-info, .comment-form, .comments-container h4{
+    margin-bottom: 1rem;
+}
+
+.filters-container{
+    display: flex;
+    margin-bottom: 2rem;
+    padding: 0.2rem;
+    align-items: center;
+}
+
+.category-filter, .most-filter, .search-filter{
+    display: flex;
+    margin: 0.6rem auto;
+}
+
+.category-filter select{
+    width: 25vw;
+    border: none;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+
+.vertical-line{
+    width: 1px;
+    height: 3rem;
+}
+
+.most-filter button{
+    margin: 0 0.5rem;
+}
+
+.search-filter input{
+    padding: 0.3rem;
+    border-radius: 20px;
+}
+
+.post{
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+
+.post-content{
+    width: 95%;
+}
+
+
+.post-info *, .comment-info *{
+    display: inline;
+}
+
+
+.post-owner{
+    margin-left: 5rem;
+}
+
+.comment-form{
+    padding-bottom: 1rem;
+    border-bottom: solid 2px white;
+}
+
+.comment{
+    margin-top: 2rem;
+    width: 85%;
+}
+
+.comment-info{
+    margin-bottom: 0.5rem;
+}
+

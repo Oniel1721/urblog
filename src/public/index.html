@@ -4,35 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/index.css">
     <title>URBLOG</title>
 </head>
-<body>
-    <header class="header">
-        <button>Log in</button>
-        <button>Sign up</button>
+<body class="black-bg vw-100">
+    <header class="header gray-bg  vw-100">
+        <button class="btn black-btn">Log in</button>
+        <button class="btn white-btn">Sign up</button>
     </header>
-    <nav class="filters-container">
+    <nav class="filters-container  vw-100">
         <div class="category-filter">
-            <select>
+            <select class="black-bg white-c bold">
                 <option value="value1" selected>Categories</option>
                 <option value="value2">Value 2</option>
                 <option value="value3">Value 3</option>
             </select>
         </div>
+        <div class="vertical-line white-bg">|</div>
         <div class="most-filter">
-            <button>Recent</button>
-            <button>Recent</button>
-            <button>Popular</button>
+            <button class="btn black-btn">Older</button>
+            <button class="btn black-btn">Recent</button>
+            <button class="btn white-btn">Popular</button>
         </div>
-        <div class="search-filter">
-            <input type="text" placeholder="Search...">
+        <div class="search-filter bold">
+            <input type="text" class="bold" placeholder="Search...">
         </div>
     </nav>
-    <main class="posts-container">
-        <div class="post">
-            <h3 class="post-title">Post Title</h3>
-            <h3 class="post-topic">Post Topic</h3>
-            <p class="post-content">
+    <main class="posts-container vw-100 ">
+        <div class="post gray-bg  post-vw m-auto">
+            <h3 class="post-title white-c bold">Post Title</h3>
+            <h4 class="post-topic white-c bold">Post Topic</h4>
+            <p class="post-content gray-c">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus laboriosam sequi rem nostrum tempora sunt a iure dolorem, explicabo non dolor reiciendis perferendis nesciunt perspiciatis expedita similique! Quo, accusantium ipsum!
                 Laudantium autem distinctio eum excepturi, enim exercitationem ex. Corporis veritatis ipsam ullam vitae alias reprehenderit voluptatum doloremque fugiat maxime itaque repellat possimus, vel consectetur quasi unde non dolore ut cumque?
                 Expedita quo dolores optio sequi magnam illum eaque unde. Est architecto inventore, id distinctio debitis tempora facilis. Vero mollitia eum quos error at aperiam debitis provident quidem aspernatur ipsum. Tempora?
@@ -45,31 +50,31 @@
                 Sequi iste fugit dolorem similique facilis fuga expedita eius tempore nisi! Culpa porro, expedita magnam quidem nulla cum nisi ducimus at? Tenetur, sequi consequatur minima quos tempore asperiores quo error!
             </p>
             <div class="post-info">
-                <p class="post-date">Oct 10 - 2021</p>
-                <p class="post-owner">Brock123</p>
+                <p class="post-date white-c">Oct 10 - 2021</p>
+                <p class="post-owner blue-c bold">Brock123</p>
             </div>
             <div class="comment-form">
                 <textarea class="hide" cols="30" rows="10" placeholder="Type a comment..."></textarea>
-                <button class="comment-btn">Comment</button>
-                <button class="cancel-btn">Cancel</button>
+                <button class="comment-btn btn white-bg black-c bold">Comment</button>
+                <button class="cancel-btn btn hide">Cancel</button>
             </div>
             <div class="comments-container">
-                <h3>2 Comments</h3>
+                <h4 class="white-c bold">2 Comments</h4>
                 <div class="comment">
                     <div class="comment-info">
-                        <p class="comment-owner">Brock123</p>
-                        <p class="comment-date">Oct 10 - 2021</p>
+                        <p class="comment-owner blue-c bold">Brock123</p>
+                        <p class="comment-date gray-c">Oct 10 - 2021</p>
                     </div>
-                    <p class="comment-content">
+                    <p class="comment-content gray-c">
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita sed culpa omnis saepe nobis porro laudantium corporis sequi consequatur amet nihil odit assumenda provident eligendi temporibus, impedit eaque. Possimus, doloribus?
                     </p>
                 </div>
                 <div class="comment">
                     <div class="comment-info">
-                        <p class="comment-owner">Brock123</p>
-                        <p class="comment-date">Oct 10 - 2021</p>
+                        <p class="comment-owner blue-c bold">Brock123</p>
+                        <p class="comment-date gray-c">Oct 10 - 2021</p>
                     </div>
-                    <p class="comment-content">
+                    <p class="comment-content gray-c">
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita sed culpa omnis saepe nobis porro laudantium corporis sequi consequatur amet nihil odit assumenda provident eligendi temporibus, impedit eaque. Possimus, doloribus?
                     </p>
                 </div>

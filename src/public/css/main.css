@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    /* border: 0; */
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+/* Tools */
+
+.black-bg{
+    background-color: #030303;
+}
+
+.gray-bg{
+    background-color: #1A1A1B;
+}
+
+.white-c{
+    color: white;
+}
+
+.white-bg{
+    background-color: white;
+}
+
+.blue-c{
+    color: #35B7FF;
+}
+
+.gray-c{
+    color: #888B97;
+}
+
+.vw100{
+    width: 100vw;
+}
+
+.post-vw{
+    width: 67.5vw;
+}
+
+.m-auto{
+    margin: auto;
+}
+
+.hide{
+    display: none;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.btn{
+    cursor: pointer;
+    border: 1px solid white;
+    font-weight: bold;
+    border-radius: 30px;
+    padding: 0.3rem 1.2rem;
+}
+
+.black-btn{
+    background-color: #030303;
+    color: white;
+}
+
+.white-btn{
+    background-color: white;
+    color: #030303;
+}
+
+.cancel-btn{
+    background-color: crimson;
+    color: #030303;
+}
+
+.btn{
+    cursor: pointer;
+}
+
+
+/* Header */
+.header{
+    display: flex;
+    padding: 5px;
+    height: 40px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header *{
+    margin-right: 10px;
+}
+
+
