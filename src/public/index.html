@@ -12,18 +12,18 @@
 </head>
 <body class="black-bg vw-100">
     <header class="header gray-bg  vw-100">
-        <button class="btn black-btn">Log in</button>
-        <button class="btn white-btn">Sign up</button>
+        <button class="btn black-btn" id="login-btn">Log in</button>
+        <button class="btn white-btn" id="signup-btn">Sign up</button>
     </header>
     <nav class="filters-container  vw-100">
         <div class="category-filter">
-            <select class="black-bg white-c bold">
+            <select class="black-bg white-c bold" data-mobile="none">
                 <option value="value1" selected>Categories</option>
                 <option value="value2">Value 2</option>
                 <option value="value3">Value 3</option>
             </select>
         </div>
-        <div class="vertical-line white-bg">|</div>
+        <div class="vertical-line white-bg" data-mobile="none">|</div>
         <div class="most-filter">
             <button class="btn white-btn transition">Recent</button>
             <button class="btn black-btn transition">Popular</button>
@@ -38,38 +38,39 @@
             <h3 class="post-title white-c bold">Post Title</h3>
             <h4 class="post-topic white-c bold">Post Topic</h4>
             <p class="post-content gray-c">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus laboriosam sequi rem nostrum tempora sunt a iure dolorem, explicabo non dolor reiciendis perferendis nesciunt perspiciatis expedita similique! Quo, accusantium ipsum!
-                Laudantium autem distinctio eum excepturi, enim exercitationem ex. Corporis veritatis ipsam ullam vitae alias reprehenderit vnt modi fugiat, possimus dolores error provident, voluptas exercitationem! Doloribus quam cupiditate laudantium.
-                Sequi iste fugit dolorem similique facilis fuga expedita eius tempore nisi! Culpa porro, expedita magnam quidem nulla cum nisi ducimus at? Tenetur, sequi consequatur minima quos tempore asperiores quo error!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus laboriosam sequi rem nostrum tempora sunt a iure dolorem
             </p>
             <div class="post-info">
                 <p class="post-date white-c">Oct 10 - 2021</p>
                 <p class="post-owner blue-c bold">Brock123</p>
             </div>
-            <div class="comment-form">
-                <textarea class="transition hide height-0" cols="30" rows="10" placeholder="Type a comment..."></textarea>
-                <button class="comment-btn btn white-bg black-c bold">Comment</button>
-                <button class="cancel-btn btn transition hide height-0">Cancel</button>
-            </div>
-            <div class="comments-container">
-                <h4 class="white-c bold">2 Comments</h4>
-                <div class="comment">
-                    <div class="comment-info">
-                        <p class="comment-owner blue-c bold">Brock123</p>
-                        <p class="comment-date gray-c">Oct 10 - 2021</p>
-                    </div>
-                    <p class="comment-content gray-c">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita sed culpa omnis saepe nobis porro laudantium corporis sequi consequatur amet nihil odit assumenda provident eligendi temporibus, impedit eaque. Possimus, doloribus?
-                    </p>
+            <p class="post-show-more bold white-c">show more</p>
+            <div class="full-post transition">
+                <div class="comment-form transition">
+                    <textarea class="transition hide height-0" cols="30" rows="10" placeholder="Type a comment..."></textarea>
+                    <button class="comment-btn btn white-bg black-c bold">Comment</button>
+                    <button class="cancel-btn btn transition hide height-0">Cancel</button>
                 </div>
-                <div class="comment">
-                    <div class="comment-info">
-                        <p class="comment-owner blue-c bold">Brock123</p>
-                        <p class="comment-date gray-c">Oct 10 - 2021</p>
+                <div class="comments-container">
+                    <h4 class="white-c bold">2 Comments</h4>
+                    <div class="comment">
+                        <div class="comment-info">
+                            <p class="comment-owner blue-c bold">Brock123</p>
+                            <p class="comment-date gray-c">Oct 10 - 2021</p>
+                        </div>
+                        <p class="comment-content gray-c">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita sed culpa omnis saepe nobis porro laudantium corporis sequi consequatur amet nihil odit assumenda provident eligendi temporibus, impedit eaque. Possimus, doloribus?
+                        </p>
                     </div>
-                    <p class="comment-content gray-c">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita sed culpa omnis saepe nobis porro laudantium corporis sequi consequatur amet nihil odit assumenda provident eligendi temporibus, impedit eaque. Possimus, doloribus?
-                    </p>
+                    <div class="comment">
+                        <div class="comment-info">
+                            <p class="comment-owner blue-c bold">Brock123</p>
+                            <p class="comment-date gray-c">Oct 10 - 2021</p>
+                        </div>
+                        <p class="comment-content gray-c">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita sed culpa omnis saepe nobis porro laudantium corporis sequi consequatur amet nihil odit assumenda provident eligendi temporibus, impedit eaque. Possimus, doloribus?
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,6 +85,33 @@
             <div class="menu-switch-line-2"></div>
         </div>
     </nav>
+    <section class="fade-screen transition">
+        <form class="log-form white-bg" id="login-form">
+            <div class="log-form-info">
+                <h3 class="bold">Sign in account</h3>
+                <p class="gray-c">Still without an account? <span class="bold blue-c">Sign up</span></p>
+            </div>
+            <div class="inputs-container">
+                <input class="bold" placeholder="username" type="text" minlength="4" maxlength="24" required>
+                <input class="bold" placeholder="password" type="password" minlength="8" maxlength="24" required>
+                <button type="submit" class="log-btn blue-bg btn white-c">Sign in</button>
+            </div>
+            <label class="log-check bold gray-c"><input type="checkbox">  Remember me</label>
+        </form>
+
+        <form class="log-form white-bg" id="signup-form">
+            <div class="log-form-info">
+                <h3 class="bold">Create account</h3>
+                <p class="gray-c">Already have an account? <span class="bold blue-c">Sign in</span></p>
+            </div>
+            <div class="inputs-container">
+                <input class="bold" placeholder="username" type="text" minlength="4" maxlength="24" required>
+                <input class="bold" placeholder="password" type="password" minlength="8" maxlength="24" required>
+                <button type="submit" class="log-btn blue-bg btn white-c">Sign up</button>
+            </div>
+            <label class="log-check bold gray-c"><input type="checkbox"> I have read and agree to the <span class="bold blue-c">Terms of Services</span></label>
+        </form>
+    </section>
     <script src="js/index.js" type="module"></script>
 </body>
 </html>

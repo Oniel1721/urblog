@@ -39,6 +39,7 @@
 .post{
     padding: 2rem;
     border-radius: 20px;
+    overflow-y: hidden;
 }
 
 
@@ -56,12 +57,28 @@
     margin-left: 5rem;
 }
 
+.post-show-more{
+    cursor: pointer;
+    text-align: center;
+}
+
+.full-post{
+    height: 0;
+    transform: scaleY(0);
+}
+
+.full-post.show{
+    transform: scaleY(1);
+    height: auto;
+}
+
 .comment-form{
     display: flex;
     padding-bottom: 1rem;
     border-bottom: solid 2px white;
     flex-wrap: wrap;
     align-items: center;
+    /* height: min-content; */
 }
 
 .comment-form textarea{
@@ -75,10 +92,6 @@
     margin-left: 1rem;
 }
 
-.comments-container h4{
-    cursor: pointer;
-}
-
 .comment{
     margin-top: 2rem;
     width: 85%;
@@ -86,5 +99,20 @@
 
 .comment-info{
     margin-bottom: 0.5rem;
+}
+
+/* Mobile */
+@media only screen and (max-width: 720px) {
+    .filters-container{
+        flex-wrap: wrap;
+    }
+    .filters-container div{
+        flex-grow: 1;
+        margin: auto;
+        padding: 0.5rem 1rem;
+    }
+    .search-filter input{
+        margin: auto;
+    }
 }
 

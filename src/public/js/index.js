@@ -1,7 +1,7 @@
 import {loginUser, editUser, eraseUser, logoutUser} from './fetch/user.js'
 import {createPost, editPost, erasePost, getPosts } from './fetch/post.js'
 import {createComment, getComments, editComment, eraseComment} from './fetch/comment.js'
-import {mostFilterBtn, commentBtn, cancelComment, showHideComments, activeMenu} from './transitions/transitions.js'
+import {mostFilterBtn, commentBtn, cancelComment, activeMenu, fullPost, loginBtn, signupBtn} from './transitions/transitions.js'
 
 
 const d = document
@@ -27,8 +27,10 @@ d.addEventListener("DOMContentLoaded", e=>{
         mostFilterBtn(e.target)
         commentBtn(e.target)
         cancelComment(e.target)
-        showHideComments(e.target)
         activeMenu(e.target)
+        fullPost(e.target)
+        loginBtn(e.target)
+        signupBtn(e.target)
     })
     // getPosts()
     // getComments()

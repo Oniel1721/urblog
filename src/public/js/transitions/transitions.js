@@ -21,14 +21,11 @@ export const mostFilterBtn = (target = null)=>{
 const hideForm = ()=>{
     let $textArea = d.querySelector('.comment-form textarea'),
     $cancelBtn = d.querySelector('.comment-form .cancel-btn')
-    $textArea.classList.add('hide')
+    $textArea.classList.add('height-0')
     $textArea.value = ''
+    $cancelBtn.classList.add('height-0')
     $cancelBtn.classList.add('hide')
-
-    setTimeout(()=>{
-        $cancelBtn.classList.add('height-0')
-        $textArea.classList.add('height-0')
-    }, 500)
+    $textArea.classList.add('hide')
 }
 
 const textAreaFocus = ()=>{
@@ -48,7 +45,7 @@ export const commentBtn = (target = null)=>{
     if(!target) return 0
     if(target.classList.contains('comment-btn')){
         if(d.querySelector('.comment-form .hide')){
-            d.querySelectorAll('.hide')
+            d.querySelectorAll('.comment-form .hide')
             .forEach((el)=>{
                 el.classList.remove('hide')
                 el.classList.remove('height-0')
@@ -70,22 +67,6 @@ export const cancelComment = (target = null)=>{
     }
 }
 
-export const showHideComments = (target = null)=>{
-    if(!target) return 0
-    let $h4 = d.querySelector('.comments-container h4')
-    let $commentsContainer = d.querySelector('.comments-container')
-    if(target === $h4){
-        if(d.querySelector('.comment')){
-            //Erase comments from UI
-            $commentsContainer.innerHTML = $h4.outerHTML
-        }
-        else{
-            // Show comments
-
-        }
-    }
-}
-
 export const activeMenu = (target = null)=>{
     if(!target) return 0
     let $switch = d.querySelector('.menu-switch')
@@ -100,5 +81,54 @@ export const activeMenu = (target = null)=>{
                 $menuOptions[i].classList.toggle(className)
             }
         }
+    }
+}
+
+export const fullPost = (target)=>{
+    if(!target) return 0
+    let $showMore = d.querySelector('.post-show-more')
+    let $fullPost = d.querySelector('.full-post')
+    if(target === $showMore){
+        if($fullPost.classList.contains('show')){
+            $showMore.textContent = 'show more'
+            $fullPost.classList.remove('show')
+        }
+        else{
+            $showMore.textContent = 'show less'
+            $fullPost.classList.add('show')
+        }
+    }
+}
+
+const fadeScreenHide = ($fadeScreen)=>{
+    $fadeScreen.classList.remove('in')
+    $fadeScreen.classList.remove('up')
+}
+
+export const loginBtn = (target)=>{
+    if(!target) return 0
+    let $loginBtn= d.getElementById('login-btn')
+    let $fadeScreen = d.querySelector('.fade-screen')
+    let $span = d.querySelector('#signup-form span')
+    if(target === $loginBtn || target === $span){
+        $fadeScreen.classList.remove('up')
+        $fadeScreen.classList.add('in')
+    }
+    else if(target === $fadeScreen){
+        fadeScreenHide($fadeScreen)
+    }
+}
+
+export const signupBtn = (target)=>{
+    if(!target) return 0
+    let $signupBtn= d.getElementById('signup-btn')
+    let $fadeScreen = d.querySelector('.fade-screen')
+    let $span = d.querySelector('#login-form span')
+    if(target === $signupBtn || target === $span){
+        $fadeScreen.classList.remove('in')
+        $fadeScreen.classList.add('up')
+    }
+    else if(target === $fadeScreen){
+        fadeScreenHide($fadeScreen)
     }
 }
