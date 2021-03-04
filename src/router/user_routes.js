@@ -5,8 +5,6 @@ const { getUserByName, saveUser, updateUser, eraseUser } = require('../controlle
 const { updatePostOwners } = require('../controller/post_controller.js')
 const { updateCommentOwners } = require('../controller/comment_controller.js')
 
-
-
 const salt = 13
 
 const verifyUser = (req, res, next)=>{
@@ -63,7 +61,7 @@ const verifyUser = (req, res, next)=>{
     }
 }
 
-Router.post('/login', (req, res)=>{
+Router.post('/signup', (req, res)=>{
     getUserByName(req.fields.username)
     .then(user=>{
         if(!user){
@@ -86,6 +84,30 @@ Router.post('/login', (req, res)=>{
             })
         }
         else{
+            let answer = {
+                msg: "username already used",
+                ok: false
+            }
+            res.json(answer) 
+        }
+    })
+    .catch(err=>{
+        console.error('getUser error: ',err)
+        res.json({msg: "error getting user"})
+    })
+})
+
+Router.post('/login', (req, res)=>{
+    getUserByName(req.fields.username)
+    .then(user=>{
+        if(!user){
+            let answer = {
+                msg: "username not found",
+                ok: false
+            }
+            res.json(answer) 
+        }
+        else{
             if(bcrypt.compareSync(req.fields.password, user.password)){
                 let answer = {
                     msg: "loged",
@@ -98,7 +120,7 @@ Router.post('/login', (req, res)=>{
                 res.json(answer)
             }
             else{
-                res.json({msg: "Incorrect Password"})
+                res.json({msg: "incorrect password", ok: false})
             }
         }
     })
@@ -107,10 +129,6 @@ Router.post('/login', (req, res)=>{
         res.json({msg: "error getting user"})
     })
 })
-
-// Router.post('/verify', verifyUser ,(req, res)=>{
-//     res.json(req.verified)
-// })
 
 Router.put('/edit', verifyUser, (req, res)=>{
     if(!req.fields.npassword && !req.fields.nusername){

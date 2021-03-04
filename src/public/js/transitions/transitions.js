@@ -100,7 +100,7 @@ export const fullPost = (target)=>{
     }
 }
 
-const fadeScreenHide = ($fadeScreen)=>{
+export const fadeScreenHide = ($fadeScreen)=>{
     $fadeScreen.classList.remove('in')
     $fadeScreen.classList.remove('up')
 }
@@ -131,4 +131,19 @@ export const signupBtn = (target)=>{
     else if(target === $fadeScreen){
         fadeScreenHide($fadeScreen)
     }
+}
+
+export const alertMsg = (msg = '', green = false)=>{
+    let $alertMsg = d.querySelector('.alert-msg')
+    $alertMsg.classList.add('show')
+    $alertMsg.firstChild.textContent = msg.toUpperCase()
+    if(green){
+        $alertMsg.classList.add('green-alert')
+    }
+    else{
+        $alertMsg.classList.remove('green-alert')
+    }
+    setTimeout(()=>{
+        $alertMsg.classList.remove('show')
+    }, 2000)
 }

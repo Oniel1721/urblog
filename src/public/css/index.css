@@ -54,7 +54,7 @@
 
 
 .post-owner{
-    margin-left: 5rem;
+    margin-left: 2rem;
 }
 
 .post-show-more{
@@ -113,6 +113,10 @@
     }
     .search-filter input{
         margin: auto;
+    }
+
+    .post-info{
+        font-size: 1.5rem;
     }
 }
 

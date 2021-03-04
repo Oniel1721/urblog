@@ -173,25 +173,9 @@ body{
     width: 5rem;
     z-index: 105;
     margin-bottom: 0;
+    transform: rotate(45deg);
 }
-
-.menu-switch div{
-    background-color: white;
-    margin: auto;
-}
-
-.menu-switch-line-1{
-    height: 4rem;
-    width:  0.5rem;
-    transform: translateY(0.5vw);
-}
-
-.menu-switch-line-2{
-    width: 4rem;
-    height:  0.55rem;
-    transform: translateY(-1.625rem);
-}
-
+   
 .menu-switch.rotate{
     transform: rotate(315deg);
 }
@@ -257,6 +241,33 @@ body{
 }
 .log-check{
     margin-left: 10%;
+}
+
+/* alert msg */
+
+.alert-msg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: crimson;
+    color: white;
+    width: 100vw;
+    height: 3rem;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    z-index: 300;
+}
+
+.alert-msg.show{
+    transform: translateY(20%);
+}
+
+.green-alert{
+    background-color: chartreuse;
+    color: #030303;
 }
 
 /* 

@@ -1,4 +1,4 @@
-import {loginUser, editUser, eraseUser, logoutUser} from './fetch/user.js'
+import {loginUser, editUser, eraseUser, logoutUser, signupUser} from './fetch/user.js'
 import {createPost, editPost, erasePost, getPosts } from './fetch/post.js'
 import {createComment, getComments, editComment, eraseComment} from './fetch/comment.js'
 import {mostFilterBtn, commentBtn, cancelComment, activeMenu, fullPost, loginBtn, signupBtn} from './transitions/transitions.js'
@@ -9,6 +9,7 @@ const d = document
 d.addEventListener("DOMContentLoaded", e=>{
     d.addEventListener('submit', e=>{
         e.preventDefault()
+        signupUser(e.target)
         loginUser(e.target)
         editUser(e.target)
         eraseUser(e.target)

@@ -1,10 +1,12 @@
 import {setItem, getItem,deleteItem} from '../localStorage.js'
+import { fadeScreenHide, alertMsg } from '../transitions/transitions.js'
 
 const d = document,
-$login = d.getElementById('user-login'),
-$erase = d.getElementById('user-erase'),
-$edit = d.getElementById('user-edit'),
-$logout = d.getElementById('logout')
+$login = d.getElementById('login-form'),
+$signup = d.getElementById('signup-form'),
+$logout = null,
+$edit = null,
+$erase = null
 
 
 export const logoutUser = (target)=>{
@@ -71,7 +73,35 @@ export const loginUser= (target)=>{
         console.log({"login-msg: ":json})
         if(json.token){
             setItem('token', json.token)
-            // Permitir acceso
+            fadeScreenHide(d.querySelector('.fade-screen'))
+            alertMsg(json.msg, true)
+        }
+        else{
+            alertMsg(json.msg)
+        }
+    })
+    .catch(err=>{
+        console.log('terror: ',err)
+    })
+}
+
+export const signupUser= (target)=>{
+    if(target !== $signup) return 0
+    const data = new FormData($signup)
+    fetch('/user/signup',{
+        body: data,
+        method: 'POST'
+    })
+    .then(res=>res.json())
+    .then(json=>{
+        console.log({"login-msg: ":json})
+        if(json.token){
+            setItem('token', json.token)
+            fadeScreenHide(d.querySelector('.fade-screen'))
+            alertMsg(json.msg, true)
+        }
+        else{
+            alertMsg(json.msg)
         }
     })
     .catch(err=>{

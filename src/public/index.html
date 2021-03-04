@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
@@ -56,7 +56,7 @@
                     <div class="comment">
                         <div class="comment-info">
                             <p class="comment-owner blue-c bold">Brock123</p>
-                            <p class="comment-date gray-c">Oct 10 - 2021</p>
+                            <p class="comment-date gray-c">10/10/2021</p>
                         </div>
                         <p class="comment-content gray-c">
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita sed culpa omnis saepe nobis porro laudantium corporis sequi consequatur amet nihil odit assumenda provident eligendi temporibus, impedit eaque. Possimus, doloribus?
@@ -65,7 +65,7 @@
                     <div class="comment">
                         <div class="comment-info">
                             <p class="comment-owner blue-c bold">Brock123</p>
-                            <p class="comment-date gray-c">Oct 10 - 2021</p>
+                            <p class="comment-date gray-c">10/10/2021</p>
                         </div>
                         <p class="comment-content gray-c">
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita sed culpa omnis saepe nobis porro laudantium corporis sequi consequatur amet nihil odit assumenda provident eligendi temporibus, impedit eaque. Possimus, doloribus?
@@ -76,14 +76,39 @@
         </div>
     </main>
     <nav class="menu-options-container">
-        <div class="menu-option opt-4 transition"></div>
-        <div class="menu-option opt-3 transition"></div>
-        <div class="menu-option opt-2 transition"></div>
-        <div class="menu-option opt-1 transition"></div>
-        <div class="menu-option menu-switch transition">
-            <div class="menu-switch-line-1"></div>
-            <div class="menu-switch-line-2"></div>
-        </div>
+        <svg id="go-top" class="menu-option opt-4 transition hide" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="26" cy="26" r="26" fill="#35B7FF"/>
+            <path d="M26.5778 20.8L36.9778 31.2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16.1777 31.2L26.5777 20.8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+            
+        <svg class="menu-option opt-3 transition" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="26" cy="26" r="26" fill="#35B7FF"/>
+            <path d="M36.9429 29.9483C36.2059 31.6983 35.0209 33.2232 33.507 34.3694C31.9932 35.5156 30.204 36.2427 28.3198 36.4775C26.4355 36.7122 24.5227 36.4463 22.7739 35.7065C21.0251 34.9667 19.5021 33.7792 18.3583 32.2636C17.2145 30.7479 16.4902 28.9576 16.2585 27.0729C16.0268 25.1883 16.2957 23.2759 17.0383 21.5283C17.7809 19.7807 18.9708 18.2596 20.4883 17.1182C22.0058 15.9768 23.7973 15.2554 25.6823 15.0267C25.8131 15.0111 25.9455 15.0368 26.0609 15.1002C26.1764 15.1636 26.2691 15.2615 26.3261 15.3802C26.3858 15.4967 26.4069 15.6292 26.3865 15.7585C26.3661 15.8878 26.3052 16.0073 26.2125 16.0998C25.4387 16.8674 24.8266 17.7824 24.4125 18.7907C23.9984 19.7989 23.7905 20.88 23.8013 21.9699C23.8124 23.4026 24.1945 24.8079 24.9102 26.049C25.6259 27.2901 26.6509 28.3246 27.8853 29.0518C29.1198 29.779 30.5215 30.174 31.954 30.1984C33.3864 30.2227 34.8008 29.8756 36.0592 29.1909C36.1761 29.1306 36.3084 29.1068 36.4389 29.1225C36.5695 29.1383 36.6923 29.1929 36.7914 29.2792C36.8759 29.3659 36.9348 29.4743 36.9615 29.5924C36.9883 29.7105 36.9818 29.8337 36.9429 29.9483Z" fill="white"/>
+        </svg>
+            
+        <svg class="menu-option opt-2 transition" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="26" cy="26" r="26" fill="#35B7FF"/>
+            <path d="M26.5778 26.5777C29.4497 26.5777 31.7778 24.2496 31.7778 21.3777C31.7778 18.5059 29.4497 16.1777 26.5778 16.1777C23.7059 16.1777 21.3778 18.5059 21.3778 21.3777C21.3778 24.2496 23.7059 26.5777 26.5778 26.5777Z" fill="white"/>
+            <path d="M26.5777 29.1777C18.6477 29.1777 16.1777 34.3777 16.1777 34.3777V36.9777H36.9777V34.3777C36.9777 34.3777 34.5077 29.1777 26.5777 29.1777Z" fill="white"/>
+        </svg>
+            
+        <svg class="menu-option opt-1 transition" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="26" cy="26" r="26" fill="#35B7FF"/>
+            <g clip-path="url(#clip0)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.1777 32.5866V36.9777H20.5688L33.28 24.1511L28.8888 19.76L16.1777 32.5866ZM36.6311 20.8C37.0933 20.3377 37.0933 19.6444 36.6311 19.1822L33.9733 16.5244C33.5111 16.0622 32.8177 16.0622 32.3555 16.5244L30.2755 18.6044L34.6666 22.9955L36.6311 20.8Z" fill="white"/>
+            </g>
+            <defs>
+            <clipPath id="clip0">
+            <rect width="20.8" height="20.8" fill="white" transform="translate(16.1777 16.1777)"/>
+            </clipPath>
+            </defs>
+        </svg>            
+        <svg class="menu-option menu-switch transition" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="36" cy="36" r="36" fill="#35B7FF"/>
+            <path d="M47.4962 44.2116L39.2846 36L47.4962 27.7884C48.4027 26.8819 48.4027 25.4104 47.4962 24.5038C46.5896 23.5973 45.1181 23.5973 44.2116 24.5038L36 32.7154L27.7884 24.5038C26.8819 23.5973 25.4104 23.5973 24.5038 24.5038C23.5973 25.4104 23.5973 26.8819 24.5038 27.7884L32.7154 36L24.5038 44.2116C23.5973 45.1181 23.5973 46.5896 24.5038 47.4962C25.4104 48.4027 26.8819 48.4027 27.7884 47.4962L36 39.2846L44.2116 47.4962C45.1181 48.4027 46.5896 48.4027 47.4962 47.4962C48.4027 46.5896 48.4027 45.1181 47.4962 44.2116Z" fill="white"/>
+        </svg>
+            
     </nav>
     <section class="fade-screen transition">
         <form class="log-form white-bg" id="login-form">
@@ -92,8 +117,8 @@
                 <p class="gray-c">Still without an account? <span class="bold blue-c">Sign up</span></p>
             </div>
             <div class="inputs-container">
-                <input class="bold" placeholder="username" type="text" minlength="4" maxlength="24" required>
-                <input class="bold" placeholder="password" type="password" minlength="8" maxlength="24" required>
+                <input name="username" class="bold" placeholder="username" type="text" minlength="4" maxlength="24" required>
+                <input name="password" class="bold" placeholder="password" type="password" minlength="8" maxlength="24" required>
                 <button type="submit" class="log-btn blue-bg btn white-c">Sign in</button>
             </div>
             <label class="log-check bold gray-c"><input type="checkbox">  Remember me</label>
@@ -105,13 +130,14 @@
                 <p class="gray-c">Already have an account? <span class="bold blue-c">Sign in</span></p>
             </div>
             <div class="inputs-container">
-                <input class="bold" placeholder="username" type="text" minlength="4" maxlength="24" required>
-                <input class="bold" placeholder="password" type="password" minlength="8" maxlength="24" required>
+                <input name="username" class="bold" placeholder="username" type="text" minlength="4" maxlength="24" required>
+                <input name="password" class="bold" placeholder="password" type="password" minlength="8" maxlength="24" required>
                 <button type="submit" class="log-btn blue-bg btn white-c">Sign up</button>
             </div>
             <label class="log-check bold gray-c"><input type="checkbox"> I have read and agree to the <span class="bold blue-c">Terms of Services</span></label>
         </form>
     </section>
+    <article class="alert-msg transition"><h3></h3></article>
     <script src="js/index.js" type="module"></script>
 </body>
 </html>
