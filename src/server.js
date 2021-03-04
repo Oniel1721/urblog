@@ -2,7 +2,7 @@ const express = require('express')
 const formidable = require('express-formidable')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const morgan = require('morgan')
+// const morgan = require('morgan')
 const path = require('path')
 const jwt = require('jsonwebtoken')
 
@@ -12,7 +12,7 @@ app.set('port', process.env.PORT || 4000)
 
 // Middlewares
 app.use(cors())
-app.use(morgan('dev'))
+// app.use(morgan('dev'))
 app.use(formidable())
 
 // Routers
