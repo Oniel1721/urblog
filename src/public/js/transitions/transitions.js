@@ -1,4 +1,88 @@
+import {getItem} from '../localStorage.js'
+
+
 const d = document
+
+let $loginBtn= d.getElementById('login-btn'),
+$loginForm = d.getElementById('login-form'),
+$fadeScreen = d.querySelector('.fade-screen'),
+$signupSpan = d.querySelector('#signup-form span'),
+$signupBtn= d.getElementById('signup-btn'),
+$signForm = d.getElementById('signup-form'),
+$loginSpan = d.querySelector('#login-form span'),
+$newPostBtn = d.getElementById('new-post-btn'),
+$postForm = d.getElementById('post-form')
+
+
+export const alertMsg = (msg = '', green = false)=>{
+    let $alertMsg = d.querySelector('.alert-msg')
+    $alertMsg.classList.add('show')
+    $alertMsg.firstChild.textContent = msg.toUpperCase()
+    if(green){
+        $alertMsg.classList.add('green-alert')
+    }
+    else{
+        $alertMsg.classList.remove('green-alert')
+    }
+    setTimeout(()=>{
+        $alertMsg.classList.remove('show')
+    }, 2000)
+}
+
+
+export const fadeScreenHide = ()=>{
+    $fadeScreen.classList.remove('show')
+    d.getElementById('signup-form').classList.remove('show')
+    d.getElementById('login-form').classList.remove('show')
+    d.getElementById('post-form').classList.remove('show')
+}
+
+export const loginBtn = (target)=>{
+    if(!target) return 0
+    if(target === $loginBtn || target === $signupSpan){
+        $fadeScreen.classList.add('show')
+        $loginForm.classList.add('show')
+        $signupSpan.parentNode.parentNode.parentNode.classList.remove('show')
+    }
+    else if(target === $fadeScreen){
+        fadeScreenHide($fadeScreen)
+    }
+}
+
+const withOutAccount = (msg)=>{
+    alertMsg('Sign In First')
+    $fadeScreen.classList.add('show')
+    $loginForm.classList.add('show') 
+}
+
+export const signupBtn = (target)=>{
+    if(!target) return 0
+    if(target === $signupBtn || target === $loginSpan){
+        $fadeScreen.classList.add('show')
+        $signForm.classList.add('show')
+        $loginSpan.parentNode.parentNode.parentNode.classList.remove('show')
+    }
+    else if(target === $fadeScreen){
+        fadeScreenHide($fadeScreen)
+    }
+}
+
+export const showPostForm = (target)=>{
+    if(!target) return 0
+    if(target === $newPostBtn || $newPostBtn.contains(target)){
+        if(getItem('token')){
+            $fadeScreen.classList.add('show')
+            $postForm.classList.add('show')
+        }
+        else{
+            withOutAccount('Sign In First')
+        }
+        activeMenu(d.querySelector('.menu-switch'))
+    }
+    else if(target === $fadeScreen || target === $postForm.querySelector('button.red-bg')){
+        fadeScreenHide($fadeScreen)
+    }
+}
 
 export const mostFilterBtn = (target = null)=>{
     if(!target) return 0
@@ -44,18 +128,26 @@ const textAreaFocus = ()=>{
 export const commentBtn = (target = null)=>{
     if(!target) return 0
     if(target.classList.contains('comment-btn')){
-        if(d.querySelector('.comment-form .hide')){
-            d.querySelectorAll('.comment-form .hide')
-            .forEach((el)=>{
-                el.classList.remove('hide')
-                el.classList.remove('height-0')
-            })
-        }
-        else if(d.querySelector('.comment-form textarea').value){
-            hideForm()
+        if(getItem('token')){
+            if(d.querySelector('.comment-form .hide')){
+                if(getItem('token')){
+                    d.querySelectorAll('.comment-form .hide')
+                    .forEach((el)=>{
+                        el.classList.remove('hide')
+                        el.classList.remove('height-0')
+                    })
+                }
+            }
+            else if(d.querySelector('.comment-form textarea').value){
+                hideForm()
+            }
+            else{
+                textAreaFocus()
+            }
         }
         else{
-            textAreaFocus()
+            hideForm()
+            withOutAccount()
         }
     }
 }
@@ -86,68 +178,15 @@ export const activeMenu = (target = null)=>{
 
 export const fullPost = (target)=>{
     if(!target) return 0
-    let $showMore = d.querySelector('.post-show-more')
-    let $fullPost = d.querySelector('.full-post')
-    if(target === $showMore){
+    if(target.classList.contains('post-show-more')){
+        let $fullPost = target.nextSibling.nextSibling
         if($fullPost.classList.contains('show')){
-            $showMore.textContent = 'show more'
+            target.textContent = 'show more'
             $fullPost.classList.remove('show')
         }
         else{
-            $showMore.textContent = 'show less'
+            target.textContent = 'show less'
             $fullPost.classList.add('show')
         }
     }
-}
-
-export const fadeScreenHide = ($fadeScreen)=>{
-    $fadeScreen.classList.remove('show')
-    d.getElementById('signup-form').classList.remove('show')
-    d.getElementById('login-form').classList.remove('show')
-}
-export const loginBtn = (target)=>{
-    if(!target) return 0
-    let $loginBtn= d.getElementById('login-btn')
-    let $loginForm = d.getElementById('login-form')
-    let $fadeScreen = d.querySelector('.fade-screen')
-    let $span = d.querySelector('#signup-form span')
-    if(target === $loginBtn || target === $span){
-        $fadeScreen.classList.add('show')
-        $loginForm.classList.add('show')
-        $span.parentNode.parentNode.parentNode.classList.remove('show')
-    }
-    else if(target === $fadeScreen){
-        fadeScreenHide($fadeScreen)
-    }
-}
-
-export const signupBtn = (target)=>{
-    if(!target) return 0
-    let $signupBtn= d.getElementById('signup-btn')
-    let $signForm = d.getElementById('signup-form')
-    let $fadeScreen = d.querySelector('.fade-screen')
-    let $span = d.querySelector('#login-form span')
-    if(target === $signupBtn || target === $span){
-        $fadeScreen.classList.add('show')
-        $signForm.classList.add('show')
-        $span.parentNode.parentNode.parentNode.classList.remove('show')
-    }
-    else if(target === $fadeScreen){
-        fadeScreenHide($fadeScreen)
-    }
-}
-
-export const alertMsg = (msg = '', green = false)=>{
-    let $alertMsg = d.querySelector('.alert-msg')
-    $alertMsg.classList.add('show')
-    $alertMsg.firstChild.textContent = msg.toUpperCase()
-    if(green){
-        $alertMsg.classList.add('green-alert')
-    }
-    else{
-        $alertMsg.classList.remove('green-alert')
-    }
-    setTimeout(()=>{
-        $alertMsg.classList.remove('show')
-    }, 2000)
 }

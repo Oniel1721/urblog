@@ -22,8 +22,9 @@ body{
     margin: auto;
 }
 
-input,textarea, button{
+input,textarea, select, option{
     outline: none;
+    border: 1px #F8FAFB solid;
 }
 /* Tools */
 
@@ -55,6 +56,10 @@ input,textarea, button{
     color: #888B97;
 }
 
+.red-bg {
+    background-color: #D41D49;
+}
+
 .vw100{
     width: 100vw;
 }
@@ -62,10 +67,6 @@ input,textarea, button{
 .post-vw{
     width: 67.5vw;
     /* width: 685px; */
-}
-
-.m-auto{
-    margin: auto;
 }
 
 .hide{
@@ -179,7 +180,7 @@ input,textarea, button{
 }
    
 .menu-switch.rotate{
-    transform: rotate(315deg);
+    transform: rotate(270deg);
 }
 
 /* fade-screen */
@@ -241,6 +242,7 @@ input,textarea, button{
     margin-top: 1rem;
     width: 41.4rem;
     height: 4.8rem;
+    border: 1px #888B97 solid;
     border-radius: 1.3rem;
     font-size: 1.8rem;
     padding-left: 1rem;
@@ -252,7 +254,66 @@ input,textarea, button{
     transform: translateY(0);
 }
 
+#post-form{
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+    width: 56.16rem;
+    top: calc(50vh - 28.08rem);
+    left: calc(50vw - 28.08rem);
+    border-radius: 1.3rem;
+    padding: 1rem;
+    align-items: center;
+    z-index: 201;
+    transform: translateY(-200%);
+}
 
+#post-form.show{
+    transform: translateY(0);
+}
+
+#post-form input, #post-form textarea, #post-form .post-form-select{
+    margin: auto;
+    width: 92%;
+    margin-top: 2.2rem;
+}
+
+#post-form input{
+    height: 4.25rem;
+    padding: 1.5rem;
+}
+
+#post-form textarea{
+    height: 25.4rem;
+    padding: 1.5rem;
+}
+
+
+#post-form .post-form-select{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#post-form select{
+    width: 12.4rem;
+    background-color: #F8FAFB;
+    padding: 0.75rem;
+    border-radius: 1.3rem;
+}
+
+
+#post-form  .post-form-btns{
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+#post-form button{
+    width: 8.6rem;
+    margin-left: 1.4rem;
+    padding: 0.75rem;
+
+}
 
 
 /* alert msg */
@@ -309,6 +370,11 @@ input,textarea, button{
 
     .inputs-container *{
         width: 26.34rem;
+    }
+
+    #post-form{
+        width: 35.6rem;
+        left: calc(50vw - 17.8rem);
     }
 
 }

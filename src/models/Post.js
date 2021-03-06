@@ -20,14 +20,6 @@ const PostSchema = new Schema({
     creationDate:{
         type: Date,
         default: Date.now()
-    },
-    publicDate:{
-        type: Date,
-        default: Date.now()
-    },
-    isPublic:{
-        type: Boolean,
-        default: false
     }
 })
 

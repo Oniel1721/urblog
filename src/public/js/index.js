@@ -2,7 +2,7 @@ import { getItem } from './localStorage.js'
 import {loginUser, editUser, eraseUser, logoutUser, signupUser, dataLoged} from './fetch/user.js'
 import {createPost, editPost, erasePost, getPosts } from './fetch/post.js'
 import {createComment, getComments, editComment, eraseComment} from './fetch/comment.js'
-import {mostFilterBtn, commentBtn, cancelComment, activeMenu, fullPost, loginBtn, signupBtn} from './transitions/transitions.js'
+import {mostFilterBtn, commentBtn, cancelComment, activeMenu, fullPost, loginBtn, signupBtn, showPostForm} from './transitions/transitions.js'
 
 const d = document,
 w = window,
@@ -45,10 +45,11 @@ d.addEventListener("DOMContentLoaded", e=>{
         loginBtn(e.target)
         signupBtn(e.target)
         scrollTop(e.target)
+        showPostForm(e.target)
     })
 
     dataLoged()
-    // getPosts()
+    getPosts()
     // getComments()
 })
 

@@ -1,7 +1,8 @@
 import {getItem} from '../localStorage.js'
+import {renderPosts, appendPost} from '../dom.js'
 
 const d = document,
-$create = d.getElementById('post-create'),
+$create = d.getElementById('post-form'),
 $erase = d.getElementById('post-erase'),
 $edit = d.getElementById('post-edit')
 
@@ -47,7 +48,8 @@ export const getPosts = (query = '')=>{
     fetch(`/post/get?${query}`)
     .then(res=>res.json())
     .then(json=>{
-        console.log({"get-msg: ":json})
+        renderPosts(json)
+        // console.log({"get-msg: ":json})
     })
     .catch(err=>{
         console.log('terror: ',err)
@@ -66,9 +68,10 @@ export const createPost = (target)=>{
     })
     .then(res=>res.json())
     .then(json=>{
-        console.log({"create-msg: ":json})
+        appendPost(json)
+        // console.log({"create-msg: ":json})
     })
     .catch(err=>{
-        console.log('terror: ',err)
+        console.log('create post: ',err)
     })
 }
