@@ -38,7 +38,8 @@
 
 .post{
     padding: 2rem;
-    border-radius: 20px;
+    border-radius: 1.3rem;
+    width: 68.5rem;
     overflow-y: hidden;
 }
 
@@ -115,8 +116,13 @@
         margin: auto;
     }
 
+    .post{
+        width: 31.4rem;
+    }
+
     .post-info{
         font-size: 1.5rem;
     }
 }
+
 

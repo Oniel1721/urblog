@@ -1,10 +1,22 @@
-import {loginUser, editUser, eraseUser, logoutUser, signupUser} from './fetch/user.js'
+import { getItem } from './localStorage.js'
+import {loginUser, editUser, eraseUser, logoutUser, signupUser, dataLoged} from './fetch/user.js'
 import {createPost, editPost, erasePost, getPosts } from './fetch/post.js'
 import {createComment, getComments, editComment, eraseComment} from './fetch/comment.js'
 import {mostFilterBtn, commentBtn, cancelComment, activeMenu, fullPost, loginBtn, signupBtn} from './transitions/transitions.js'
 
+const d = document,
+w = window,
+$goTop = d.getElementById('go-top')
 
-const d = document
+const scrollTop = (target)=>{
+    if(target === $goTop || $goTop.contains(target)){
+        w.scrollTo({
+            behavior: "smooth",
+            top: 0
+        })
+        activeMenu(d.querySelector('.menu-switch'))
+    }
+}
 
 d.addEventListener("DOMContentLoaded", e=>{
     d.addEventListener('submit', e=>{
@@ -32,9 +44,23 @@ d.addEventListener("DOMContentLoaded", e=>{
         fullPost(e.target)
         loginBtn(e.target)
         signupBtn(e.target)
+        scrollTop(e.target)
     })
+
+    dataLoged()
     // getPosts()
     // getComments()
 })
+
+w.addEventListener("scroll", e=> {
+    let scrollTop = w.pageYOffset || d.documentElement.scrollTop;
+    if(scrollTop >= 600){
+        $goTop.classList.remove('hide')
+    }
+    else{
+        $goTop.classList.add('hide')
+    }
+})
+
 
 

@@ -1,3 +1,5 @@
+@import url('normalice.css');
+
 html{
     scroll-behavior: smooth;
     box-sizing: border-box;
@@ -18,6 +20,10 @@ body{
     line-height: 1.3;
     max-width: 100vw;
     margin: auto;
+}
+
+input,textarea, button{
+    outline: none;
 }
 /* Tools */
 
@@ -63,7 +69,7 @@ body{
 }
 
 .hide{
-    transform: scale(0,0);
+    transform: scaleY(0);
     /* height: 0; */
     /* width: 0; */
 
@@ -81,7 +87,7 @@ body{
     cursor: pointer;
     border: 1px solid white;
     font-weight: bold;
-    border-radius: 30px;
+    border-radius: 13px;
     padding: 0.3rem 1.2rem;
 }
 
@@ -99,10 +105,6 @@ body{
     background-color: crimson;
     color: #030303;
     border: 1px solid #030303;
-}
-
-.btn{
-    cursor: pointer;
 }
 
 .transition{
@@ -186,38 +188,42 @@ body{
     display: flex;
     flex-direction: column;
     min-width: 100vw;
-    min-height: 200vh;
-    background-color: #1e1e1f80;
+    min-height: 100vh;
+    background-color: transparent;
     position: fixed;
     top: 0;
     left: 0;
+    z-index: -1;
+}
+
+.fade-screen.show{
+    background-color: #00000080;
     z-index: 200;
-    transform: translateY(-100%);
-}
-
-.fade-screen.up{
-    transform: translateY(-50%);
-}
-
-.fade-screen.in{
-    transform: translateY(0);
 }
 
 .log-form{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin: auto;
-    width: 35rem;
-    height: 30rem;
-    border-radius: 1rem;
+    justify-content: center;
+    position: fixed;
+    width: 55.4rem;
+    height: 35.8rem;
+    top: calc(50vh - 17.9rem);
+    left: calc(50vw - 27.7rem);
+    border-radius: 1.3rem;
     padding: 1rem;
+    transform: translateY(-200%);
+    z-index: 201;
+    visibility: hidden;
+    
 }
 
 .log-form-info{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
 }
 
 .log-form span{
@@ -233,15 +239,21 @@ body{
 
 .inputs-container *{
     margin-top: 1rem;
-    width: 80%;
-    height: 4rem;
-    border-radius: 1rem;
-    font-size: 1.5rem;
+    width: 41.4rem;
+    height: 4.8rem;
+    border-radius: 1.3rem;
+    font-size: 1.8rem;
     padding-left: 1rem;
 }
-.log-check{
-    margin-left: 10%;
+
+.log-form.show{
+    /* display: flex; */
+    visibility: visible;
+    transform: translateY(0);
 }
+
+
+
 
 /* alert msg */
 
@@ -289,6 +301,20 @@ body{
     .header{
         padding: 2rem 1rem;
     }
+
+    .log-form{
+        width: 35.12rem;
+        left: calc(50vw - 17.56rem);
+    }
+
+    .inputs-container *{
+        width: 26.34rem;
+    }
+
+}
+
+.display-none{
+    display: none;
 }
 
 

@@ -101,18 +101,20 @@ export const fullPost = (target)=>{
 }
 
 export const fadeScreenHide = ($fadeScreen)=>{
-    $fadeScreen.classList.remove('in')
-    $fadeScreen.classList.remove('up')
+    $fadeScreen.classList.remove('show')
+    d.getElementById('signup-form').classList.remove('show')
+    d.getElementById('login-form').classList.remove('show')
 }
-
 export const loginBtn = (target)=>{
     if(!target) return 0
     let $loginBtn= d.getElementById('login-btn')
+    let $loginForm = d.getElementById('login-form')
     let $fadeScreen = d.querySelector('.fade-screen')
     let $span = d.querySelector('#signup-form span')
     if(target === $loginBtn || target === $span){
-        $fadeScreen.classList.remove('up')
-        $fadeScreen.classList.add('in')
+        $fadeScreen.classList.add('show')
+        $loginForm.classList.add('show')
+        $span.parentNode.parentNode.parentNode.classList.remove('show')
     }
     else if(target === $fadeScreen){
         fadeScreenHide($fadeScreen)
@@ -122,11 +124,13 @@ export const loginBtn = (target)=>{
 export const signupBtn = (target)=>{
     if(!target) return 0
     let $signupBtn= d.getElementById('signup-btn')
+    let $signForm = d.getElementById('signup-form')
     let $fadeScreen = d.querySelector('.fade-screen')
     let $span = d.querySelector('#login-form span')
     if(target === $signupBtn || target === $span){
-        $fadeScreen.classList.remove('in')
-        $fadeScreen.classList.add('up')
+        $fadeScreen.classList.add('show')
+        $signForm.classList.add('show')
+        $span.parentNode.parentNode.parentNode.classList.remove('show')
     }
     else if(target === $fadeScreen){
         fadeScreenHide($fadeScreen)

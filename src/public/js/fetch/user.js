@@ -4,14 +4,35 @@ import { fadeScreenHide, alertMsg } from '../transitions/transitions.js'
 const d = document,
 $login = d.getElementById('login-form'),
 $signup = d.getElementById('signup-form'),
-$logout = null,
+$logout = d.getElementById('logout-btn'),
 $edit = null,
 $erase = null
+
+export const dataLoged = ()=>{
+    if(getItem('token')){
+        d.querySelectorAll('[data-loged="true"').forEach(el=>{
+            el.classList.remove('display-none')
+        })
+        d.querySelectorAll('[data-loged="false"').forEach(el=>{
+            el.classList.add('display-none')
+        })
+    }
+    else{
+        d.querySelectorAll('[data-loged="true"').forEach(el=>{
+            el.classList.add('display-none')
+        })
+        d.querySelectorAll('[data-loged="false"').forEach(el=>{
+            el.classList.remove('display-none')
+        })
+    }
+}
 
 
 export const logoutUser = (target)=>{
     if(target === $logout){
         deleteItem('token')
+        dataLoged()
+        alertMsg('user logout', true)
     }
     // reload page
 }
@@ -75,6 +96,7 @@ export const loginUser= (target)=>{
             setItem('token', json.token)
             fadeScreenHide(d.querySelector('.fade-screen'))
             alertMsg(json.msg, true)
+            dataLoged()
         }
         else{
             alertMsg(json.msg)
@@ -99,6 +121,7 @@ export const signupUser= (target)=>{
             setItem('token', json.token)
             fadeScreenHide(d.querySelector('.fade-screen'))
             alertMsg(json.msg, true)
+            dataLoged()
         }
         else{
             alertMsg(json.msg)
