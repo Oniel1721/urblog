@@ -1,4 +1,6 @@
 import {getItem} from '../localStorage.js'
+import {getPosts } from '../fetch/post.js'
+import {showMorePost, renderPostsByOlder, renderPostsByRecent} from '../dom.js'
 
 
 const d = document
@@ -90,9 +92,19 @@ export const mostFilterBtn = (target = null)=>{
         d.querySelectorAll('.most-filter .btn')
         .forEach((filter)=>{
             if(filter === target){
-                target.classList.add('white-btn')
-                target.classList.remove('black-btn')
-                // Change order
+                if(!filter.classList.contains('white-btn')){
+                    target.classList.add('white-btn')
+                    target.classList.remove('black-btn')
+                    if(filter.textContent === 'Recent'){
+                        getPosts('',renderPostsByRecent)
+                    }
+                    else if(filter.textContent === 'Older'){
+                        getPosts('',renderPostsByOlder)
+                    }
+                    else if(filter.textContent === 'Popular'){
+                        
+                    }
+                }
             }
             else{
                 filter.classList.add('black-btn')
@@ -179,12 +191,15 @@ export const activeMenu = (target = null)=>{
 export const fullPost = (target)=>{
     if(!target) return 0
     if(target.classList.contains('post-show-more')){
-        let $fullPost = target.nextSibling.nextSibling
+        let $fullPost = target.nextSibling
+        let _id = target.parentNode.id
         if($fullPost.classList.contains('show')){
+            showMorePost(_id)
             target.textContent = 'show more'
             $fullPost.classList.remove('show')
         }
         else{
+            getPosts(`_id=${_id}`, showMorePost)
             target.textContent = 'show less'
             $fullPost.classList.add('show')
         }

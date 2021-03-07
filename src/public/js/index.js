@@ -3,6 +3,7 @@ import {loginUser, editUser, eraseUser, logoutUser, signupUser, dataLoged} from 
 import {createPost, editPost, erasePost, getPosts } from './fetch/post.js'
 import {createComment, getComments, editComment, eraseComment} from './fetch/comment.js'
 import {mostFilterBtn, commentBtn, cancelComment, activeMenu, fullPost, loginBtn, signupBtn, showPostForm} from './transitions/transitions.js'
+import { renderPostsByRecent, appendPost } from './dom.js'
 
 const d = document,
 w = window,
@@ -49,8 +50,7 @@ d.addEventListener("DOMContentLoaded", e=>{
     })
 
     dataLoged()
-    getPosts()
-    // getComments()
+    getPosts('', renderPostsByRecent)
 })
 
 w.addEventListener("scroll", e=> {

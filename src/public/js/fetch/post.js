@@ -1,5 +1,6 @@
 import {getItem} from '../localStorage.js'
-import {renderPosts, appendPost} from '../dom.js'
+import {fadeScreenHide} from '../transitions/transitions.js'
+import {renderPostsByRecent, appendPost} from '../dom.js'
 
 const d = document,
 $create = d.getElementById('post-form'),
@@ -44,11 +45,13 @@ export const editPost = (target)=>{
     })
 }
 
-export const getPosts = (query = '')=>{
+export const getPosts = (query = '', cb=null)=>{
     fetch(`/post/get?${query}`)
     .then(res=>res.json())
     .then(json=>{
-        renderPosts(json)
+        if(cb){
+            cb(json)
+        }
         // console.log({"get-msg: ":json})
     })
     .catch(err=>{
@@ -56,7 +59,7 @@ export const getPosts = (query = '')=>{
     })
 }
 
-export const createPost = (target)=>{
+export const createPost = (target, cb = null)=>{
     if(target !== $create) return 0
     const data = new FormData($create)
     fetch('/post/create',{
@@ -68,7 +71,10 @@ export const createPost = (target)=>{
     })
     .then(res=>res.json())
     .then(json=>{
-        appendPost(json)
+        fadeScreenHide()
+        if(cb){
+            cb(json)
+        }
         // console.log({"create-msg: ":json})
     })
     .catch(err=>{
