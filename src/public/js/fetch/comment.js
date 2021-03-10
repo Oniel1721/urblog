@@ -1,4 +1,5 @@
 import {getItem} from '../localStorage.js'
+import {state, setState} from '../dom.js'
 
 const d = document,
 $create = d.getElementById('comment-create'),
@@ -47,16 +48,20 @@ export const getComments = (query = '')=>{
     fetch(`/comment/get?${query}`)
     .then(res=>res.json())
     .then(json=>{
-        console.log({"get-msg: ":json})
+        state.comments = json
+        setState(state)
     })
     .catch(err=>{
         console.log('terror: ',err)
     })
 }
 
-export const createComment = (target)=>{
-    if(target !== $create) return 0
-    const data = new FormData($create)
+export const createComment = (target = null)=>{
+    if(!target.classList.contains('comment-form')) return 0
+    const data = new FormData(target)
+    let postId = target.parentNode.parentNode.id.slice(2)
+    data.set('postId', postId)
+    console.log('submitiando')
     fetch('/comment/create',{
         body: data,
         method: 'POST',
@@ -66,7 +71,8 @@ export const createComment = (target)=>{
     })
     .then(res=>res.json())
     .then(json=>{
-        console.log({"create-msg: ":json})
+        state.comments.push(json.comment)
+        setState(state)
     })
     .catch(err=>{
         console.log('terror: ',err)

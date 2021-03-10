@@ -33,9 +33,9 @@ d.addEventListener("DOMContentLoaded", e=>{
         createPost(e.target)
         erasePost(e.target)
 
-        createComment(e.target)
-        editComment(e.target)
-        eraseComment(e.target)
+        // createComment(e.target)
+        // editComment(e.target)
+        // eraseComment(e.target)
     })
     
     d.addEventListener('click', e=>{
@@ -59,6 +59,7 @@ d.addEventListener("DOMContentLoaded", e=>{
 
     dataLoged()
     getPosts('')
+    getComments('')
 })
 
 $categoryFilter.addEventListener('change', e=>{

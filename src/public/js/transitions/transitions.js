@@ -1,5 +1,5 @@
 import {getItem, setItem} from '../localStorage.js'
-import {getPosts } from '../fetch/post.js'
+import { createComment } from '../fetch/comment.js'
 import {showMorePost, setState} from '../dom.js'
 
 
@@ -117,18 +117,18 @@ const hideForm = ()=>{
     $textArea.classList.add('hide')
 }
 
-const textAreaFocus = ()=>{
-    let $textArea = d.querySelector('.comment-form textarea')
-    let i = 0
-    let interval = setInterval(()=>{
-        $textArea.classList.toggle('cancel-btn')
-        if(i>5){
-            $textArea.classList.remove('cancel-btn')
-            clearInterval(interval)
-        }
-        i++
-    }, 125)
-}
+// const textAreaFocus = ()=>{
+//     let $textArea = d.querySelector('.comment-form textarea')
+//     let i = 0
+//     let interval = setInterval(()=>{
+//         $textArea.classList.toggle('cancel-btn')
+//         if(i>5){
+//             $textArea.classList.remove('cancel-btn')
+//             clearInterval(interval)
+//         }
+//         i++
+//     }, 125)
+// }
 
 export const commentBtn = (target = null)=>{
     if(!target) return 0
@@ -144,10 +144,8 @@ export const commentBtn = (target = null)=>{
                 }
             }
             else if(d.querySelector('.comment-form textarea').value){
+                createComment(target.parentNode)
                 hideForm()
-            }
-            else{
-                textAreaFocus()
             }
         }
         else{
@@ -187,14 +185,14 @@ export const fullPost = (target)=>{
         let $fullPost = target.nextSibling
         let _id = target.parentNode.id
         if($fullPost.classList.contains('show')){
-            showMorePost(_id)
             target.textContent = 'show more'
             $fullPost.classList.remove('show')
+            showMorePost(_id)
         }
         else{
-            getPosts(`_id=${_id}`, showMorePost)
             target.textContent = 'show less'
             $fullPost.classList.add('show')
+            showMorePost(_id, true)
         }
     }
 }

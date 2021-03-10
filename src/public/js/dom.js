@@ -1,11 +1,11 @@
 import {setItem, getItem} from './localStorage.js'
 
 const d = document,
-$main = d.querySelector('main'),
-$categoryFilter = d.querySelector('.category-filter select')
+$main = d.querySelector('main')
 
 const inmutableState = {
-    posts:[]
+    posts:[],
+    comments: []
 }
 
 const formateDate = (creationDate = '')=>{
@@ -50,6 +50,44 @@ const formateDate = (creationDate = '')=>{
     }
 }
 
+export const appendComment = ({postId, owner, content = '', _id, creationDate})=>{
+    let $commentsContainer = d.querySelector(`#p-${postId} .comments-container`)
+    let $comment = d.createElement('div')
+    let $commentInfo = d.createElement('div')
+    let $owner = d.createElement('p')
+    let $date = d.createElement('p')
+    let $content = d.createElement('p')
+
+    $comment.setAttribute('class', 'comment')
+    $commentInfo.setAttribute('class', 'comment-info')
+    $owner.setAttribute('class', 'comment-owner blue-c bold')
+    $date.setAttribute('class', 'comment-date gray-c')
+    $content.setAttribute('class', 'comment-content gray-c')
+
+    $owner.textContent = owner
+    $date.textContent = creationDate
+    $content.textContent = content
+
+    $commentInfo.appendChild($owner)
+    $commentInfo.appendChild($date)
+    $comment.appendChild($commentInfo)
+    $comment.appendChild($content)
+    $commentsContainer.appendChild($comment)
+    /*
+    `
+    <div class="comment">
+            <div class="comment-info">
+                <p class="comment-owner blue-c bold">Brock123</p>
+                <p class="comment-date gray-c">10/10/2021</p>
+            </div>
+            <p class="comment-content gray-c">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita sed culpa omnis saepe nobis porro laudantium corporis sequi consequatur amet nihil odit assumenda provident eligendi temporibus, impedit eaque. Possimus, doloribus?
+            </p>
+    </div>
+    
+    `*/
+}
+
 export const appendPost = ({owner, _id, title, content = '', topic, creationDate})=>{
     let $post = d.createElement('div')
     let $title = d.createElement('h3')
@@ -60,8 +98,10 @@ export const appendPost = ({owner, _id, title, content = '', topic, creationDate
     let $owner = d.createElement('p')
     let $showMore = d.createElement('p')
     let $fullPost = d.createElement('div')
+    let $commentForm = d.createElement('form')
+    let $commentsContainer = d.createElement('div')
     
-    $post.setAttribute('id', _id)
+    $post.setAttribute('id', `p-${_id}`)
     $post.setAttribute('class', 'post gray-bg post-vw')
     $title.setAttribute('class', 'post-title white-c bold')
     $topic.setAttribute('class', 'post-topic white-c bold')
@@ -71,6 +111,8 @@ export const appendPost = ({owner, _id, title, content = '', topic, creationDate
     $owner.setAttribute('class', 'post-owner blue-c bold')
     $showMore.setAttribute('class', 'post-show-more bold white-c')
     $fullPost.setAttribute('class', 'full-post transition')
+    $commentForm.setAttribute('class', 'comment-form transition')
+    $commentsContainer.setAttribute('class', 'comments-container')
 
     $title.textContent = title
     $topic.textContent = topic
@@ -79,6 +121,11 @@ export const appendPost = ({owner, _id, title, content = '', topic, creationDate
     $date.textContent = creationDate
     $owner.textContent = owner
     $showMore.textContent = 'show more'
+    $commentForm.innerHTML = `
+    <textarea required name="content" class="transition hide height-0" cols="30" rows="10" placeholder="Type a comment..."></textarea>
+    <button type="submit" class="comment-btn btn white-bg black-c bold">Comment</button>
+    <button class="cancel-btn btn transition hide height-0">Cancel</button>
+    `
 
     $post.appendChild($title)
     $post.appendChild($topic)
@@ -87,21 +134,46 @@ export const appendPost = ({owner, _id, title, content = '', topic, creationDate
     $postInfo.appendChild($owner)
     $post.appendChild($postInfo)
     $post.appendChild($showMore)
+    $fullPost.appendChild($commentForm)
+    $fullPost.appendChild($commentsContainer)
     $post.appendChild($fullPost)
-    
     $main.appendChild($post)
 }
 
-export const showMorePost = (posts = null)=>{
-    if(typeof posts === 'string'){
-        let $post = d.getElementById(posts)
-        let $content = $post.querySelector('.post-content')
-        $content.textContent = $content.textContent.length>=255?`${$content.textContent.slice(0,255)}...`:$content.textContent
+
+export const renderCommentsOfPost = (postId)=>{
+    let $commentsContainer = d.querySelector(`#p-${postId} .comments-container`)
+    let numberOfComment = 0,
+    s = ''
+    $commentsContainer.innerHTML = ''
+    inmutableState.comments.forEach(comment=>{
+        if(postId.includes(comment.postId)){
+            appendComment(comment)
+            numberOfComment++
+        }
+    })
+    if(numberOfComment >=1){
+        if(numberOfComment !== 1){
+            s = 's'
+        }
+        $commentsContainer.innerHTML = `<h4 class="white-c bold">${numberOfComment} Comment${s}</h4>` + $commentsContainer.innerHTML
     }
-    else if(posts){
-        let {_id, content = ''} = posts[0]
-        let $post = d.getElementById(_id)
-        $post.querySelector('.post-content').textContent = content
+
+}
+
+export const showMorePost = (id = null, more = false)=>{
+    let $post = d.getElementById(id)
+    let $content = $post.querySelector('.post-content')
+    if(more){
+        inmutableState.posts.forEach(el=>{
+            if(id.includes(el._id)){
+                $content.textContent = el.content
+                renderCommentsOfPost(el._id)
+            }
+        })
+    }
+    else{
+        $content.textContent = $content.textContent.length>=255?`${$content.textContent.slice(0,255)}...`:$content.textContent
     }
 }
 
@@ -163,7 +235,7 @@ const renderState = ()=>{
     else if(order === 'Older'){
         renderPostsByOlder()
     }
-    categoryFilter() 
+    categoryFilter()
     searchFilter()
 }
 
@@ -180,3 +252,34 @@ export const setState = (newValue = null)=>{
 }
 
 export let state = JSON.parse(JSON.stringify(inmutableState))
+
+let fullpost = `
+<div class="full-post transition">
+    <div class="comment-form transition">
+        <textarea name="content" class="transition hide height-0" cols="30" rows="10" placeholder="Type a comment..."></textarea>
+        <button class="comment-btn btn white-bg black-c bold">Comment</button>
+        <button class="cancel-btn btn transition hide height-0">Cancel</button>
+    </div>
+    <div class="comments-container">
+        <h4 class="white-c bold">2 Comments</h4>
+        <div class="comment">
+            <div class="comment-info">
+                <p class="comment-owner blue-c bold">Brock123</p>
+                <p class="comment-date gray-c">10/10/2021</p>
+            </div>
+            <p class="comment-content gray-c">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita sed culpa omnis saepe nobis porro laudantium corporis sequi consequatur amet nihil odit assumenda provident eligendi temporibus, impedit eaque. Possimus, doloribus?
+            </p>
+        </div>
+        <div class="comment">
+            <div class="comment-info">
+                <p class="comment-owner blue-c bold">Brock123</p>
+                <p class="comment-date gray-c">10/10/2021</p>
+            </div>
+            <p class="comment-content gray-c">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita sed culpa omnis saepe nobis porro laudantium corporis sequi consequatur amet nihil odit assumenda provident eligendi temporibus, impedit eaque. Possimus, doloribus?
+            </p>
+        </div>
+    </div>
+</div>
+`
