@@ -126,6 +126,11 @@ input,textarea, select, option{
     margin-right: 1rem;
 }
 
+.logout-btn{
+    display: flex;
+    align-items: center;
+}
+
 /* BTN-MENU */
 
 .menu-options-container{
@@ -218,6 +223,10 @@ input,textarea, select, option{
     z-index: 201;
     visibility: hidden;
     
+}
+
+.log-form input{
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.1);
 }
 
 .log-form-info{

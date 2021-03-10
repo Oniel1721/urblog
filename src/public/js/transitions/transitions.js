@@ -1,6 +1,6 @@
-import {getItem} from '../localStorage.js'
+import {getItem, setItem} from '../localStorage.js'
 import {getPosts } from '../fetch/post.js'
-import {showMorePost, renderPostsByOlder, renderPostsByRecent} from '../dom.js'
+import {showMorePost, setState} from '../dom.js'
 
 
 const d = document
@@ -95,15 +95,8 @@ export const mostFilterBtn = (target = null)=>{
                 if(!filter.classList.contains('white-btn')){
                     target.classList.add('white-btn')
                     target.classList.remove('black-btn')
-                    if(filter.textContent === 'Recent'){
-                        getPosts('',renderPostsByRecent)
-                    }
-                    else if(filter.textContent === 'Older'){
-                        getPosts('',renderPostsByOlder)
-                    }
-                    else if(filter.textContent === 'Popular'){
-                        
-                    }
+                    setItem('order', filter.textContent)
+                    setState(false)
                 }
             }
             else{

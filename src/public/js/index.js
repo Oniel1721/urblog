@@ -3,11 +3,13 @@ import {loginUser, editUser, eraseUser, logoutUser, signupUser, dataLoged} from 
 import {createPost, editPost, erasePost, getPosts } from './fetch/post.js'
 import {createComment, getComments, editComment, eraseComment} from './fetch/comment.js'
 import {mostFilterBtn, commentBtn, cancelComment, activeMenu, fullPost, loginBtn, signupBtn, showPostForm} from './transitions/transitions.js'
-import { renderPostsByRecent, appendPost } from './dom.js'
+import { categoryFilter, searchFilter } from './dom.js'
 
 const d = document,
 w = window,
-$goTop = d.getElementById('go-top')
+$goTop = d.getElementById('go-top'),
+$categoryFilter = d.querySelector('.category-filter select'),
+$searchFilter = d.querySelector('.search-filter input')
 
 const scrollTop = (target)=>{
     if(target === $goTop || $goTop.contains(target)){
@@ -49,8 +51,18 @@ d.addEventListener("DOMContentLoaded", e=>{
         showPostForm(e.target)
     })
 
+    d.addEventListener('keyup', e=>{
+        if(e.target === $searchFilter){
+            searchFilter($searchFilter.value)
+        }
+    })
+
     dataLoged()
-    getPosts('', renderPostsByRecent)
+    getPosts('')
+})
+
+$categoryFilter.addEventListener('change', e=>{
+    categoryFilter($categoryFilter.value)
 })
 
 w.addEventListener("scroll", e=> {

@@ -1,5 +1,12 @@
+import {setItem, getItem} from './localStorage.js'
+
 const d = document,
-$main = d.querySelector('main')
+$main = d.querySelector('main'),
+$categoryFilter = d.querySelector('.category-filter select')
+
+const inmutableState = {
+    posts:[]
+}
 
 const formateDate = (creationDate = '')=>{
     // 2021-03-06T20:06:58.802Z
@@ -68,7 +75,8 @@ export const appendPost = ({owner, _id, title, content = '', topic, creationDate
     $title.textContent = title
     $topic.textContent = topic
     $content.textContent = content.length>=255?`${content.slice(0,255)}...`:content
-    $date.textContent = formateDate(creationDate)
+    // $date.textContent = formateDate(creationDate)
+    $date.textContent = creationDate
     $owner.textContent = owner
     $showMore.textContent = 'show more'
 
@@ -97,6 +105,30 @@ export const showMorePost = (posts = null)=>{
     }
 }
 
+export const categoryFilter = (value = null)=>{
+    d.querySelectorAll('.post-topic').forEach(el=>{
+        if(!value) el.parentNode.classList.remove('display-none')
+        else if(el.textContent === value){
+            el.parentNode.classList.remove('display-none')
+        }
+        else{
+            el.parentNode.classList.add('display-none')
+        }
+    })
+}
+
+export const searchFilter = (value = null)=>{
+    d.querySelectorAll('.post').forEach(el=>{
+        if(!value) el.classList.remove('display-none')
+        else if(el.textContent.includes(value)){
+            el.classList.remove('display-none')
+        }
+        else{
+            el.classList.add('display-none')
+        }
+    })
+}
+
 export const reverseOrder = ()=>{
     let $container = d.querySelector('.posts-container')
     let $fragment = d.createDocumentFragment()
@@ -108,17 +140,43 @@ export const reverseOrder = ()=>{
     $container.appendChild($fragment)
 }
 
-export const renderPostsByOlder = (posts)=>{
+export const renderPostsByOlder = ()=>{
     $main.innerHTML = ''
-    posts.forEach((post)=>{
+    inmutableState.posts.forEach((post)=>{
         appendPost(post)
     }) 
 }
 
 
-export const renderPostsByRecent = (posts)=>{
+export const renderPostsByRecent = ()=>{
     $main.innerHTML = ''
-    posts.reverse().forEach((post)=>{
-        appendPost(post)
-    }) 
+    for(let i = inmutableState.posts.length-1; i>=0; i--){
+        appendPost(inmutableState.posts[i])
+    }
 }
+
+const renderState = ()=>{
+    let order = getItem('order')
+    if(order === 'Recent'){
+        renderPostsByRecent()
+    }
+    else if(order === 'Older'){
+        renderPostsByOlder()
+    }
+    categoryFilter() 
+    searchFilter()
+}
+
+
+export const setState = (newValue = null)=>{
+    if(newValue){
+        for(let prop in inmutableState){
+            if(newValue[prop]){
+                inmutableState[prop] = newValue[prop]
+            }
+        }
+    }
+    renderState()
+}
+
+export let state = JSON.parse(JSON.stringify(inmutableState))
