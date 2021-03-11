@@ -106,6 +106,10 @@
     margin-bottom: 0.5rem;
 }
 
+.comment-owner{
+    margin-right: 1rem;
+}
+
 /* Mobile */
 @media only screen and (max-width: 720px) {
     .filters-container{

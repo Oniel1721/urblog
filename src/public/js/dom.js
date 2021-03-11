@@ -24,6 +24,7 @@ const formateDate = (creationDate = '')=>{
         for(let i = 0; i<3; i++){
             let dif = parseInt(now[prop][i]) - parseInt(date[prop][i])
             if(dif>0){
+                // console.log({creationDate, 'days':dayjs().format(), dif, prop, i})
                 let s = dif>1?'s':''
                 if(prop === 'date'){
                     switch(i){
@@ -65,7 +66,8 @@ export const appendComment = ({postId, owner, content = '', _id, creationDate})=
     $content.setAttribute('class', 'comment-content gray-c')
 
     $owner.textContent = owner
-    $date.textContent = creationDate
+    $date.textContent = formateDate(creationDate)
+    // $date.textContent = creationDate
     $content.textContent = content
 
     $commentInfo.appendChild($owner)
@@ -117,8 +119,8 @@ export const appendPost = ({owner, _id, title, content = '', topic, creationDate
     $title.textContent = title
     $topic.textContent = topic
     $content.textContent = content.length>=255?`${content.slice(0,255)}...`:content
-    // $date.textContent = formateDate(creationDate)
-    $date.textContent = creationDate
+    $date.textContent = formateDate(creationDate)
+    // $date.textContent = creationDate
     $owner.textContent = owner
     $showMore.textContent = 'show more'
     $commentForm.innerHTML = `

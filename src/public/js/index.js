@@ -1,4 +1,4 @@
-import { getItem } from './localStorage.js'
+import { getItem, setItem } from './localStorage.js'
 import {loginUser, editUser, eraseUser, logoutUser, signupUser, dataLoged} from './fetch/user.js'
 import {createPost, editPost, erasePost, getPosts } from './fetch/post.js'
 import {createComment, getComments, editComment, eraseComment} from './fetch/comment.js'
@@ -22,6 +22,7 @@ const scrollTop = (target)=>{
 }
 
 d.addEventListener("DOMContentLoaded", e=>{
+    setItem('order', 'Recent')
     d.addEventListener('submit', e=>{
         e.preventDefault()
         signupUser(e.target)
