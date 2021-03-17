@@ -33,8 +33,11 @@
 
 .search-filter input{
     padding: 0.3rem;
-    padding-left: 1rem;
+    padding-left: 2.5rem;
     border-radius: 20px;
+    background-image: url('../assets/lupa.svg') ;
+    background-repeat: no-repeat;
+    background-position: 0.5rem;
 }
 
 .post{

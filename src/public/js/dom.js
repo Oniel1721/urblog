@@ -126,7 +126,7 @@ export const appendPost = ({owner, _id, title, content = '', topic, creationDate
     $commentForm.innerHTML = `
     <textarea required name="content" class="transition hide height-0" cols="30" rows="10" placeholder="Type a comment..."></textarea>
     <button type="submit" class="comment-btn btn white-bg black-c bold">Comment</button>
-    <button class="cancel-btn btn transition hide height-0">Cancel</button>
+    <button type="reset" class="cancel-btn btn transition hide height-0">Cancel</button>
     `
 
     $post.appendChild($title)

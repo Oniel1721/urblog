@@ -22,9 +22,13 @@ body{
     margin: auto;
 }
 
-input,textarea, select, option{
+input, textarea, select, option{
     outline: none;
     border: 1px #F8FAFB solid;
+}
+
+textarea{
+    resize: none;
 }
 /* Tools */
 
@@ -116,6 +120,9 @@ input,textarea, select, option{
 /* Header */
 .header{
     display: flex;
+    position: sticky;
+    top: 0;
+    left: 0;
     padding: 0.5rem;
     height: 4rem;
     justify-content: flex-end;

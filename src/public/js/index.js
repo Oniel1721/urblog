@@ -34,7 +34,8 @@ d.addEventListener("DOMContentLoaded", e=>{
         createPost(e.target)
         erasePost(e.target)
 
-        // createComment(e.target)
+
+        createComment(e.target)
         // editComment(e.target)
         // eraseComment(e.target)
     })

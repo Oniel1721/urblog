@@ -143,10 +143,6 @@ export const commentBtn = (target = null)=>{
                     })
                 }
             }
-            else if(d.querySelector('.comment-form textarea').value){
-                createComment(target.parentNode)
-                hideForm()
-            }
         }
         else{
             hideForm()

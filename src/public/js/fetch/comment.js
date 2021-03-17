@@ -60,6 +60,7 @@ export const createComment = (target = null)=>{
     if(!target.classList.contains('comment-form')) return 0
     const data = new FormData(target)
     let postId = target.parentNode.parentNode.id.slice(2)
+    console.log(postId)
     data.set('postId', postId)
     console.log('submitiando')
     fetch('/comment/create',{
